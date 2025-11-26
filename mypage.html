@@ -1,0 +1,54 @@
+<!-- ===================================== -->
+<!-- mypage.html -->
+<!-- ===================================== -->
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>COALAB LMS · 마이페이지</title>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<style>
+body{font-family:'Noto Sans KR',sans-serif;margin:0;background:#f8f9fb;}
+header{background:#0066ff;color:white;padding:16px;text-align:center;font-weight:bold;}
+.wrap{max-width:800px;margin:30px auto;background:white;border-radius:10px;padding:24px;box-shadow:0 2px 6px rgba(0,0,0,.1);}
+table{width:100%;border-collapse:collapse;}
+th,td{padding:10px;border-bottom:1px solid #ddd;text-align:left;}
+th{background:#f3f4f6;}
+.status{font-weight:bold;color:#0066ff;}
+</style>
+</head>
+<body>
+<header>COALAB 마이페이지</header>
+<div class="wrap">
+<h3>내 수강 내역</h3>
+<table id="enrollTable">
+<thead><tr><th>강의명</th><th>상태</th><th>결제ID</th></tr></thead>
+<tbody></tbody>
+</table>
+</div>
+
+
+<script>
+const supabase = window.supabase.createClient('https://YOUR-PROJECT.supabase.co','YOUR_ANON_KEY');
+
+
+async function loadEnrollments(){
+const user=(await supabase.auth.getUser()).data.user;
+if(!user){alert('로그인이 필요합니다.');location.href='login.html';return;}
+const {data,error}=await supabase.from('enrollments').select('*,programs(title)').eq('user_id',user.id);
+if(error){console.error(error);return;}
+const tbody=document.querySelector('#enrollTable tbody');
+tbody.innerHTML='';
+data.forEach(e=>{
+const tr=document.createElement('tr');
+tr.innerHTML=`<td>${e.programs?.title||''}</td><td class='status'>${e.status}</td><td>${e.payment_id||'-'}</td>`;
+tbody.appendChild(tr);
+});
+}
+
+
+loadEnrollments();
+</script>
+</body>
+</html>

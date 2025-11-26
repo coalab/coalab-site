@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COALAB 평생교육원 · 강의 목록</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <!-- ✅ Header -->
+  <header>COALAB 평생교육원 · 강의 목록</header>
+
+  <!-- ✅ 강좌 목록 영역 -->
+  <div id="courseList" class="grid"></div>
+
+  <!-- ✅ Supabase 연동 스크립트 -->
+  <script>
+    // Supabase 초기화
+    const supabase = window.supabase.createClient(
+      'https://YOUR-PROJECT.supabase.co',   // 🔹 프로젝트 URL
+      'YOUR_ANON_KEY'                       // 🔹 공개용 anon key
+    );
+
+    // 강의 목록 불러오기
+    async function loadCourses() {
+      const { data, error } = await supabase.from('programs').select('*');
+      if (error) {
+        console.error(error);
+        return;
+      }
+
+      const list = document.getElementById('courseList');
+      list.innerHTML = '';
+
+      data.forEach(c => {
+        const div = document.createElement('div');
+        div.className = 'card';
+        div.innerHTML = `
+          <img src="${c.thumbnail || 'https://placehold.co/300x160'}" alt="${c.title}">
+          <h3>${c.title}</h3>
+          <p>${c.description || ''}</p>
+          <button class="btn" onclick="enroll(${c.id}, ${c.price})">
+            수강신청 (${c.price ? c.price.toLocaleString() : 0}원)
+          </button>
+        `;
+        list.appendChild(div);
+      });
+    }
+
+    // 수강 신청 함수
+    async function enroll(programId, price) {
+      const user = (await supabase.auth.getUser()).data.user;
+      if (!user) {
+        alert('로그인이 필요합니다.');
+        location.href = 'login.html';
+        return;
+      }
+
+      const res = await fetch('https://YOUR-PROJECT.functions.supabase.co/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ program_id: programId, user_id: user.id, price })
+      });
+
+      const data = await res.json();
+      window.location.href = data.url;
+    }
+
+    // 페이지 로드 시 강의 목록 불러오기
+    loadCourses();
+  </script>
+</body>
+</html>
