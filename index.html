@@ -8,72 +8,106 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css" />
     
-    <!-- CTA 버튼을 위한 임시 스타일 (style.css에 통합해야 함) -->
+    <!-- 디자인 개선을 위한 임시 스타일 -->
     <style>
+        /* [1. 전체 레이아웃 및 여백 개선] */
+        body {
+            background-color: #f7f9fc; /* 배경색을 아주 밝은 회색으로 변경 */
+        }
+        header {
+            background-color: #ffffff; /* 헤더 배경색 흰색 유지 */
+            border-bottom: 1px solid #e0e0e0; /* 헤더에 얇은 구분선 추가 */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* 미묘한 그림자 추가 */
+        }
+
+        /* [2. Hero Section 및 CTA 강조] */
         .cta-area {
-            margin-top: 40px;
+            margin-top: 50px; /* 여백 증가 */
             text-align: center;
         }
         .cta-button {
             display: inline-block;
-            padding: 15px 30px;
+            padding: 18px 35px; /* 버튼 크기 키움 */
             background-color: #008080; /* 강조색 */
             color: white;
             text-decoration: none;
-            font-size: 1.1em;
-            font-weight: bold;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 128, 128, 0.3);
+            font-size: 1.2em; /* 폰트 크기 증가 */
+            font-weight: 700;
+            border-radius: 12px; /* 모서리 부드럽게 */
+            box-shadow: 0 6px 18px rgba(0, 128, 128, 0.4); /* 그림자 강조 */
             transition: all 0.3s;
         }
         .cta-button:hover {
             background-color: #006666;
-            transform: translateY(-2px);
-            box-shadow: 0 7px 18px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 128, 128, 0.5);
         }
-        /* 기존 hero section의 스타일을 위해 임시로 추가된 부분 */
+        .hero h2 {
+            font-size: 2.5em; /* 제목 글꼴 크기 키움 */
+            font-weight: 800;
+            color: #333;
+        }
+        .hero p {
+            font-size: 1.2em;
+            color: #666;
+        }
         .hero {
-            padding: 80px 20px;
+            padding: 100px 20px; /* 상하 패딩 증가 */
             text-align: center;
+            background-color: #ffffff;
+            border-bottom: 1px solid #f0f0f0;
         }
-        /* 로고 이미지 및 텍스트 스타일 */
+
+        /* [3. 로고 영역 스타일] */
         .logo-img {
-            height: 40px; /* 로고 크기 유지 */
+            height: 45px; /* 로고 크기 살짝 더 키움 (40px -> 45px) */
             width: auto;
-            vertical-align: middle;
-            margin-right: 10px; /* 간격 살짝 증가 */
+            margin-right: 12px; /* 간격 증가 */
         }
         .logo-text {
-            font-size: 1.6em; /* 텍스트 크기 증가 (1.5em -> 1.6em) */
-            font-weight: 700;
-            color: #008080; /* 🔥🔥🔥 텍스트에 브랜드 컬러 적용 🔥🔥🔥 */
-            vertical-align: middle;
-            letter-spacing: -0.5px; /* 약간의 자간 조정 */
+            font-size: 1.7em; /* 텍스트 크기 증가 */
+            font-weight: 800;
+            color: #008080;
+            letter-spacing: -0.8px; /* 자간 조정 */
         }
         header h1 {
-            /* flex를 사용하여 이미지와 텍스트를 정렬 */
             display: flex; 
             align-items: center;
             line-height: 1; 
         }
         
-        /* 서비스 카드 호버 효과 */
+        /* [4. 서비스 카드 개선] */
         .card {
             transition: box-shadow 0.3s ease, transform 0.3s ease;
-            border-radius: 12px;
-            padding: 25px;
+            border-radius: 15px; /* 모서리 더 둥글게 */
+            padding: 30px; /* 패딩 증가 */
+            background-color: #fff; /* 카드 배경 흰색 명시 */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* 기본 그림자 */
         }
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px); /* 이동 효과 증가 */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* 그림자 강조 */
+        }
+        .cards {
+            /* flex/grid를 사용하고 있을 것으로 가정, 카드 사이 간격 확보 */
+            gap: 25px; 
+        }
+        .card h4 {
+            color: #008080;
+            font-size: 1.2em;
         }
         .details-link {
             color: #008080; 
-            font-weight: 500;
-            transition: color 0.2s;
+            font-weight: 600;
+            text-decoration: none; /* 기본 밑줄 제거 */
         }
         .details-link:hover {
             color: #006666;
+            text-decoration: underline;
+        }
+        .emoji {
+            font-size: 2.2em; /* 이모지 크기 키움 */
+            margin-bottom: 10px;
         }
     </style>
 </head>
