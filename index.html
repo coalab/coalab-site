@@ -36,10 +36,24 @@
             padding: 80px 20px;
             text-align: center;
         }
+      /* 새로 추가 및 수정: 로고 이미지 및 텍스트 스타일 */
         .logo-img {
-            height: 30px; /* 로고 크기 조정 (필요에 따라 style.css로 옮겨야 함) */
+            height: 40px; /* 로고 크기 증가 (30px -> 40px) */
             width: auto;
             vertical-align: middle;
+            margin-right: 8px; /* 텍스트와의 간격 추가 */
+        }
+        .logo-text {
+            font-size: 1.5em; /* 텍스트 크기 지정 */
+            font-weight: 700;
+            color: inherit;
+            vertical-align: middle;
+        }
+        header h1 {
+            /* 로고(이미지 + 텍스트)가 header에서 중앙 정렬되도록 */
+            display: flex; 
+            align-items: center;
+            line-height: 1; /* 높이 맞춤 */
         }
     </style>
 </head>
@@ -49,8 +63,8 @@
     <!-- ✅ Header -->
     <header>
         <!-- <h1>COALAB</h1> -->
-        <h1>
-            <img src="./assets/img/logo.png" alt="COALAB 로고" class="logo-img">
+          <img src="./assets/img/logo.png" alt="COALAB 로고" class="logo-img">
+            <span class="logo-text">COALAB</span>
         </h1>
         <nav>
             <a href="#hero">홈</a>
@@ -78,37 +92,41 @@
     </section>
 
 
-    <!-- ✅ 서비스 Section -->
+     <!-- ✅ 서비스 Section -->
     <section class="section" id="services">
         <h3>COALAB 대표 서비스</h3>
 
         <div class="cards">
+            <!-- 1. 기업 실무 연계형 AI 교육 (강조) -->
+            <div class="card">
+                <div class="emoji" role="img" aria-label="로봇 이모지">🤖</div>
+                <h4>기업 실무 AI 자동화</h4>
+                <p>Generative AI 기반의 보고서, 문서 처리 등 업무 자동화 실습.</p>
+                <div class="meta">
+                    <div class="meta-item">⏱️ <span>4주</span></div>
+                    <div class="meta-item">👥 <span>기업/실무자</span></div>
+                </div>
+                <!-- 링크를 AI 지원 사업 페이지로 연결 -->
+                <a class="details-link" href="ai-proposal.html">지원 내용 확인 →</a>
+            </div>
+
+            <!-- 2. 학생/일반 대상 AI 콘텐츠 교육 (기존 웹 디자인 대체) -->
             <div class="card">
                 <div class="emoji" role="img" aria-label="졸업 모자 이모지">🎓</div>
-                <h4>AI 교육 콘텐츠</h4>
-                <p>초·중·고·대학·성인 대상 맞춤형 생성형 AI 실습 프로그램.</p>
+                <h4>학생/일반 AI 콘텐츠 제작</h4>
+                <p>미래세대 대상 AI 스토리북, 웹툰 등 창작 프로젝트 실습 프로그램.</p>
                 <div class="meta">
                     <div class="meta-item">⏱️ <span>8주</span></div>
-                    <div class="meta-item">👥 <span>초급</span></div>
+                    <div class="meta-item">👥 <span>학생/일반</span></div>
                 </div>
-                <a class="details-link" href="#">자세히 보기 →</a>
+                <a class="details-link" href="ai-proposal.html">교육 커리큘럼 →</a>
             </div>
 
-            <div class="card">
-                <div class="emoji" role="img" aria-label="팔레트 이모지">🎨</div>
-                <h4>웹 디자인 실무</h4>
-                <p>실무에서 바로 활용 가능한 웹 디자인 스킬을 익혀보세요.</p>
-                <div class="meta">
-                    <div class="meta-item">⏱️ <span>10주</span></div>
-                    <div class="meta-item">👥 <span>중급</span></div>
-                </div>
-                <a class="details-link" href="#">자세히 보기 →</a>
-            </div>
-
+            <!-- 3. 데이터 및 웹 서비스 개발 기초 -->
             <div class="card">
                 <div class="emoji" role="img" aria-label="차트 이모지">📊</div>
-                <h4>데이터 분석 입문</h4>
-                <p>데이터를 통해 인사이트를 발견하는 방법을 배워보세요.</p>
+                <h4>데이터 분석 & 웹 입문</h4>
+                <p>데이터 인사이트 도출 및 기초 웹 서비스 개발 스킬 습득.</p>
                 <div class="meta">
                     <div class="meta-item">⏱️ <span>12주</span></div>
                     <div class="meta-item">👥 <span>초급</span></div>
@@ -224,5 +242,6 @@
 
 </body>
 </html>
+
 
 
