@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COALAB AI 역량 강화 제안서</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Chart Container Styling Rules */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* Constraint for readability */
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        /* Hide scrollbar for clean UI in specific overflow areas */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Custom card hover effects */
+        .interactive-card {
+            transition: all 0.3s ease;
+        }
+        .interactive-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+    <!-- Chosen Palette: Warm Corporate Tech (Slate, Teal, Amber) -->
+    <!-- Application Structure Plan: 
+         1. Hero Section: Immediate value proposition and vision.
+         2. Problem & Solution Context: Establishing the 'Why' using a comparative layout.
+         3. Core Competencies Dashboard: Visualizing COALAB's strengths via a Radar Chart.
+         4. Strategic Proposals (Interactive Tabs): The core content (Top 3 models) presented in a tabbed interface to allow deep diving without clutter.
+         5. Roadmap Grid: A structured grid for the 7 support areas.
+         6. Impact Simulator: An interactive calculator + Bar Chart to demonstrate potential efficiency gains (30% metric).
+         This structure moves from abstract vision to concrete solution, then to capabilities, and finally to quantifiable impact.
+    -->
+    <!-- Visualization & Content Choices:
+         1. Capability Radar (Chart.js): Visualizes Slide 3 strengths (Education, Dev, Network, etc.) to show balance. Goal: Compare.
+         2. Efficiency Impact Chart (Chart.js): Visualizes Slide 8 (30% efficiency gain). Goal: Change/Impact.
+         3. Interactive Tab System (Vanilla JS): Organizes Slide 4, 5, 6 (Top 3 Proposals) to reduce cognitive load. Goal: Organize.
+         4. Process Flow Cards (HTML/CSS): Visualizes Roadmap steps. Goal: Inform.
+         CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
+    -->
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed selection:bg-teal-100 selection:text-teal-900">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-slate-200 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-teal-700 tracking-tight">COALAB</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#vision" class="text-slate-600 hover:text-teal-600 font-medium transition-colors">비전</a>
+                    <a href="#competency" class="text-slate-600 hover:text-teal-600 font-medium transition-colors">핵심역량</a>
+                    <a href="#proposals" class="text-slate-600 hover:text-teal-600 font-medium transition-colors">제안모델</a>
+                    <a href="#impact" class="text-slate-600 hover:text-teal-600 font-medium transition-colors">기대효과</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-teal-600 focus:outline-none">
+                        <span class="text-2xl">☰</span>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <a href="#vision" class="block py-2 text-slate-600 hover:text-teal-600">비전</a>
+                <a href="#competency" class="block py-2 text-slate-600 hover:text-teal-600">핵심역량</a>
+                <a href="#proposals" class="block py-2 text-slate-600 hover:text-teal-600">제안모델</a>
+                <a href="#impact" class="block py-2 text-slate-600 hover:text-teal-600">기대효과</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="vision" class="bg-white pt-16 pb-12 lg:pt-24 lg:pb-20 border-b border-slate-100">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <span class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-teal-800 uppercase bg-teal-100 rounded-full">
+                스타트업 역량 강화 & DX 지원
+            </span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight">
+                AI 기술을 실무의<br><span class="text-teal-600">확실한 경쟁력</span>으로
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
+                COALAB은 단순 교육을 넘어, <strong class="text-slate-800">실무 적용 가능한 프로토타입</strong>과 
+                <strong class="text-slate-800">공공데이터 기반 비즈니스 모델</strong>을 통해 스타트업의 디지털 전환을 가속화합니다.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#proposals" class="px-8 py-3 bg-teal-600 text-white font-bold rounded-lg shadow-lg hover:bg-teal-700 transition-colors">
+                    제안 모델 보기
+                </a>
+                <a href="#impact" class="px-8 py-3 bg-white text-teal-600 border border-teal-200 font-bold rounded-lg hover:bg-teal-50 transition-colors">
+                    효과 시뮬레이션
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Context: Problem & Solution -->
+    <section class="py-16 bg-slate-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">왜 지금 AI 실무 역량인가?</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">
+                    AI 기술 격차와 비효율적인 업무 프로세스는 스타트업의 생존을 위협합니다. 
+                    COALAB은 이 문제를 해결하기 위해 '바로 쓰는' 솔루션을 제안합니다.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Problem Card -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-red-100 relative overflow-hidden interactive-card">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-red-50 rounded-bl-full -mr-10 -mt-10"></div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                        <span class="bg-red-100 text-red-600 w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm">!</span>
+                        현실의 장벽
+                    </h3>
+                    <ul class="space-y-3 text-slate-600">
+                        <li class="flex items-start">
+                            <span class="mr-2 text-red-400">✕</span> 기술 격차 심화로 인한 경쟁력 저하
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2 text-red-400">✕</span> 반복 업무로 인한 인력 및 비용 낭비
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2 text-red-400">✕</span> 전문 AI/데이터 인력 채용의 어려움
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Solution Card -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-teal-100 relative overflow-hidden interactive-card">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-teal-50 rounded-bl-full -mr-10 -mt-10"></div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                        <span class="bg-teal-100 text-teal-600 w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm">✓</span>
+                        COALAB 솔루션
+                    </h3>
+                    <ul class="space-y-3 text-slate-600">
+                        <li class="flex items-start">
+                            <span class="mr-2 text-teal-500">○</span> 실무자가 바로 쓰는 AI 교육 패키지
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2 text-teal-500">○</span> 아이디어를 즉시 구현하는 PoC 제작
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2 text-teal-500">○</span> 데이터 기반 비즈니스 모델 발굴
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Competencies (Radar Chart) -->
+    <section id="competency" class="py-16 bg-white border-t border-slate-100">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-slate-900 mb-6">COALAB의 핵심 역량</h2>
+                    <p class="text-slate-600 mb-6 text-lg">
+                        COALAB은 교육, 개발, 네트워크가 균형 잡힌 최적의 파트너입니다. 
+                        단순 지식 전달이 아닌, 실제 결과물을 만들어내는 역량을 보유하고 있습니다.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center p-3 bg-slate-50 rounded-lg">
+                            <span class="text-2xl mr-4">🎓</span>
+                            <div>
+                                <h4 class="font-bold text-slate-800">교육 전문성</h4>
+                                <p class="text-sm text-slate-500">생성형 AI, SQL, 데이터 분석 커리큘럼 보유</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-3 bg-slate-50 rounded-lg">
+                            <span class="text-2xl mr-4">💻</span>
+                            <div>
+                                <h4 class="font-bold text-slate-800">PoC 개발 능력</h4>
+                                <p class="text-sm text-slate-500">Streamlit, Flask, RAG 챗봇 등 신속 개발</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-3 bg-slate-50 rounded-lg">
+                            <span class="text-2xl mr-4">🤝</span>
+                            <div>
+                                <h4 class="font-bold text-slate-800">지역 연계 네트워크</h4>
+                                <p class="text-sm text-slate-500">대학, 공공기관 협력을 통한 확산 허브</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-2xl flex flex-col justify-center items-center">
+                    <h3 class="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-4">Competency Radar</h3>
+                    <div class="chart-container">
+                        <canvas id="competencyChart"></canvas>
+                    </div>
+                    <p class="text-xs text-center text-slate-400 mt-4">* 자체 역량 평가 기준 (5점 만점)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top 3 Proposals (Interactive Tabs) -->
+    <section id="proposals" class="py-20 bg-slate-900 text-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-teal-400 font-bold tracking-wider text-sm uppercase">Strategic Focus</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-6">성공 가능성 높은 3대 제안 모델</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">
+                    COALAB의 보유 역량과 시장 수요를 분석하여 도출한 최우선 추진 과제입니다.
+                    아래 탭을 클릭하여 각 모델의 상세 내용을 확인하세요.
+                </p>
+            </div>
+
+            <!-- Tabs Navigation -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8">
+                <button onclick="switchTab('proposal1')" id="tab-proposal1" class="px-6 py-3 rounded-full font-bold text-sm transition-all bg-teal-600 text-white shadow-lg hover:bg-teal-500 ring-2 ring-teal-600 ring-offset-2 ring-offset-slate-900">
+                    1. AI 자동화 & 교육
+                </button>
+                <button onclick="switchTab('proposal2')" id="tab-proposal2" class="px-6 py-3 rounded-full font-bold text-sm transition-all bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-white border border-slate-700">
+                    2. AI 콘텐츠 제작
+                </button>
+                <button onclick="switchTab('proposal3')" id="tab-proposal3" class="px-6 py-3 rounded-full font-bold text-sm transition-all bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-white border border-slate-700">
+                    3. 공공데이터 웹앱
+                </button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="bg-slate-800 rounded-2xl p-8 md:p-12 border border-slate-700 shadow-2xl transition-all duration-500 ease-in-out" id="proposal-content">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Grid -->
+    <section class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="mb-10 text-center md:text-left">
+                <h2 class="text-3xl font-bold text-slate-900">포괄적 지원 로드맵 (7대 영역)</h2>
+                <p class="text-slate-600 mt-2">AI 역량 내재화부터 사업 모델 기획까지 전방위적 지원을 제공합니다.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Grid Items -->
+                <div class="p-6 bg-slate-50 rounded-xl border border-slate-100 hover:border-teal-200 hover:bg-teal-50 transition-colors group">
+                    <div class="text-2xl mb-3 group-hover:scale-110 transition-transform duration-300">📚</div>
+                    <h3 class="font-bold text-slate-800 mb-2">AI 역량 내재화</h3>
+                    <p class="text-sm text-slate-600">전문 교육 프로그램 제공 (생성형 AI, 데이터 분석)</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-xl border border-slate-100 hover:border-teal-200 hover:bg-teal-50 transition-colors group">
+                    <div class="text-2xl mb-3 group-hover:scale-110 transition-transform duration-300">🛠️</div>
+                    <h3 class="font-bold text-slate-800 mb-2">기술 실증/검증</h3>
+                    <p class="text-sm text-slate-600">AI 기반 프로토타입 제작·검증 (챗봇, 웹앱)</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-xl border border-slate-100 hover:border-teal-200 hover:bg-teal-50 transition-colors group">
+                    <div class="text-2xl mb-3 group-hover:scale-110 transition-transform duration-300">📊</div>
+                    <h3 class="font-bold text-slate-800 mb-2">데이터 비즈니스</h3>
+                    <p class="text-sm text-slate-600">공공데이터 기반 모델 개발 및 분석 리포트</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-xl border border-slate-100 hover:border-teal-200 hover:bg-teal-50 transition-colors group">
+                    <div class="text-2xl mb-3 group-hover:scale-110 transition-transform duration-300">💡</div>
+                    <h3 class="font-bold text-slate-800 mb-2">사업 모델 기획</h3>
+                    <p class="text-sm text-slate-600">AI·콘텐츠 융합 컨설팅 (웹툰, CX전략)</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-xl border border-slate-100 hover:border-teal-200 hover:bg-teal-50 transition-colors group">
+                    <div class="text-2xl mb-3 group-hover:scale-110 transition-transform duration-300">🌱</div>
+                    <h3 class="font-bold text-slate-800 mb-2">지역 생태계</h3>
+                    <p class="text-sm text-slate-600">인력 양성 및 지역 기반 AI 확산 (동아리, 창업자)</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-xl border border-slate-100 hover:border-teal-200 hover:bg-teal-50 transition-colors group">
+                    <div class="text-2xl mb-3 group-hover:scale-110 transition-transform duration-300">⚡</div>
+                    <h3 class="font-bold text-slate-800 mb-2">업무 효율화 (DX)</h3>
+                    <p class="text-sm text-slate-600">문서 자동화 및 소기업용 DX 지원 서비스 상품화</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-xl border border-slate-100 hover:border-teal-200 hover:bg-teal-50 transition-colors group lg:col-span-3">
+                    <div class="flex items-center">
+                        <div class="text-2xl mr-4 group-hover:scale-110 transition-transform duration-300">🏅</div>
+                        <div>
+                            <h3 class="font-bold text-slate-800 mb-1">인증 연계</h3>
+                            <p class="text-sm text-slate-600">민간자격 기반 교육 패키지 (기업 교육 + 인증)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Simulator -->
+    <section id="impact" class="py-16 bg-teal-50 border-t border-teal-100">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-3xl font-bold text-slate-900 mb-6">도입 기대 효과 시뮬레이터</h2>
+                    <p class="text-slate-600 mb-8">
+                        COALAB의 AI 자동화 솔루션 도입 시 예상되는 업무 효율성 증대를 직접 확인해보세요.
+                        <br><span class="text-sm text-slate-500">*평균 30% 효율 향상을 기준으로 계산됩니다.</span>
+                    </p>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-teal-100">
+                        <div class="mb-6">
+                            <label class="block text-sm font-bold text-slate-700 mb-2">직원 수 (명)</label>
+                            <input type="range" id="employeeCount" min="1" max="50" value="10" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-teal-600">
+                            <div class="flex justify-between text-xs text-slate-500 mt-2">
+                                <span>1명</span>
+                                <span id="employeeVal" class="font-bold text-teal-600 text-base">10명</span>
+                                <span>50명</span>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-bold text-slate-700 mb-2">주당 반복 업무 시간 (시간/인)</label>
+                            <input type="range" id="hoursCount" min="1" max="40" value="15" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-teal-600">
+                            <div class="flex justify-between text-xs text-slate-500 mt-2">
+                                <span>1시간</span>
+                                <span id="hoursVal" class="font-bold text-teal-600 text-base">15시간</span>
+                                <span>40시간</span>
+                            </div>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100">
+                            <h4 class="text-sm text-slate-500 mb-1">절약 예상 시간 (월간)</h4>
+                            <p class="text-3xl font-bold text-teal-600" id="savedTimeResult">180 시간</p>
+                            <p class="text-xs text-slate-400 mt-1">월 환산 가치: 약 <span id="moneySaved">2,700,000</span>원 (시급 1.5만원 기준)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-center">
+                    <h3 class="text-center font-bold text-slate-800 mb-4">업무 시간 단축 효과</h3>
+                    <div class="chart-container">
+                        <canvas id="impactChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Long Term Vision -->
+            <div class="mt-16 text-center">
+                <h3 class="text-2xl font-bold text-slate-900 mb-8">장기 비전 (3년 내)</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg border border-slate-100">
+                        <div class="text-teal-600 font-bold text-4xl mb-2">Hub</div>
+                        <p class="font-medium text-slate-800">지역 기반 AI 확산 허브</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg border border-slate-100">
+                        <div class="text-teal-600 font-bold text-4xl mb-2">Product</div>
+                        <p class="font-medium text-slate-800">소기업용 DX 서비스 상품화</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg border border-slate-100">
+                        <div class="text-teal-600 font-bold text-4xl mb-2">Cycle</div>
+                        <p class="font-medium text-slate-800">교육+인증+기술 선순환</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-2xl text-white font-bold mb-4">COALAB</h2>
+            <p class="mb-8 max-w-xl mx-auto">
+                AI 기반의 실질적인 기업 가치 창출을 약속합니다.<br>
+                상세 커리큘럼 및 PoC 진행 범위 협의를 요청드립니다.
+            </p>
+            <div class="text-sm">
+                &copy; 2025 COALAB. All rights reserved. <br>
+                제안서 제출일: 2025. 12.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- Data & Logic for Interactive Elements ---
+
+        // 1. Radar Chart Data (Core Competencies)
+        const radarConfig = {
+            type: 'radar',
+            data: {
+                labels: ['AI 교육 전문성', 'PoC 개발 능력', '지역 네트워크', '데이터 분석', '비즈니스 기획', 'DX 컨설팅'],
+                datasets: [{
+                    label: 'COALAB 역량',
+                    data: [5, 4.5, 4.5, 4, 4, 3.5],
+                    fill: true,
+                    backgroundColor: 'rgba(13, 148, 136, 0.2)', // Teal-600 low opacity
+                    borderColor: 'rgb(13, 148, 136)',
+                    pointBackgroundColor: 'rgb(13, 148, 136)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(13, 148, 136)'
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
+                        grid: { color: 'rgba(0, 0, 0, 0.1)' },
+                        pointLabels: {
+                            font: { size: 12, family: 'sans-serif', weight: 'bold' },
+                            color: '#475569' // slate-600
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 5,
+                        ticks: { display: false } // Hide numbers on axis for cleaner look
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                        titleFont: { size: 13 },
+                        bodyFont: { size: 13 },
+                        padding: 10,
+                        cornerRadius: 4
+                    }
+                }
+            }
+        };
+
+        // 2. Proposal Data Object
+        const proposals = {
+            proposal1: {
+                title: "기업 맞춤형 AI 자동화 & 교육 패키지",
+                subtitle: "실무 효율 10배 증대 (Top 1)",
+                icon: "⚡",
+                details: [
+                    { label: "목표", text: "중소기업 실무 생산성 극대화" },
+                    { label: "교육", text: "생성형 AI 업무자동화, LLM 서비스 실습" },
+                    { label: "구축", text: "문서 요약, 보고서 작성, 세금/재무 자동화 모델" },
+                    { label: "차별점", text: "단순 교육이 아닌 '교육 + 우리 회사 맞춤 구축' 지원" }
+                ],
+                tag: "수요 매우 높음"
+            },
+            proposal2: {
+                title: "AI 콘텐츠 제작 기술 & 시제품",
+                subtitle: "중소기업 브랜딩 강화 (Top 2)",
+                icon: "🎨",
+                details: [
+                    { label: "목표", text: "마케팅 콘텐츠 제작 비용/시간 획기적 절감" },
+                    { label: "교육", text: "AI 스토리북, 웹툰, 쇼츠, 영상 심화 과정" },
+                    { label: "구축", text: "브랜딩 영상, 홍보용 스토리북 MVP 제작" },
+                    { label: "차별점", text: "교육 결과물로 즉각적인 마케팅 자산 확보" }
+                ],
+                tag: "만족도 높음"
+            },
+            proposal3: {
+                title: "공공데이터 기반 AI 웹앱 개발",
+                subtitle: "새로운 비즈니스 모델 발굴 (Top 3)",
+                icon: "🏛️",
+                details: [
+                    { label: "목표", text: "지역 특화 데이터 활용 신규 서비스 PoC 검증" },
+                    { label: "활용", text: "파주시 공공데이터, 소공단 API 연계" },
+                    { label: "구축", text: "데이터 대시보드, RAG 챗봇 MVP" },
+                    { label: "차별점", text: "지역 기관 협업 및 데이터 기반 의사결정 구조 마련" }
+                ],
+                tag: "확장성 우수"
+            }
+        };
+
+        // 3. Tab Switching Logic
+        function switchTab(proposalId) {
+            // Update Tab Styles
+            const buttons = document.querySelectorAll('button[id^="tab-"]');
+            buttons.forEach(btn => {
+                if (btn.id === `tab-${proposalId}`) {
+                    btn.classList.remove('bg-slate-800', 'text-slate-400', 'hover:bg-slate-700', 'border-slate-700');
+                    btn.classList.add('bg-teal-600', 'text-white', 'shadow-lg', 'ring-2', 'ring-teal-600', 'ring-offset-2', 'ring-offset-slate-900');
+                } else {
+                    btn.classList.add('bg-slate-800', 'text-slate-400', 'hover:bg-slate-700', 'border-slate-700');
+                    btn.classList.remove('bg-teal-600', 'text-white', 'shadow-lg', 'ring-2', 'ring-teal-600', 'ring-offset-2', 'ring-offset-slate-900');
+                }
+            });
+
+            // Update Content with Animation
+            const contentDiv = document.getElementById('proposal-content');
+            const p = proposals[proposalId];
+            
+            // Fade out
+            contentDiv.style.opacity = '0';
+            
+            setTimeout(() => {
+                let html = `
+                    <div class="flex flex-col lg:flex-row gap-8 items-start">
+                        <div class="flex-1">
+                            <div class="flex items-center mb-4">
+                                <span class="text-4xl mr-4">${p.icon}</span>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white">${p.title}</h3>
+                                    <p class="text-teal-400 font-medium">${p.subtitle}</p>
+                                </div>
+                            </div>
+                            <div class="space-y-4 mt-6">
+                                ${p.details.map(d => `
+                                    <div class="bg-slate-700/50 p-4 rounded-lg border border-slate-600">
+                                        <span class="text-xs font-bold text-teal-300 uppercase tracking-wide block mb-1">${d.label}</span>
+                                        <p class="text-slate-200">${d.text}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        <div class="lg:w-1/3 w-full bg-slate-700 rounded-xl p-6 border border-slate-600 flex flex-col items-center justify-center text-center h-full min-h-[200px]">
+                            <span class="text-slate-400 text-sm mb-2">Key Strength</span>
+                            <div class="px-4 py-2 bg-teal-900 text-teal-200 rounded-full text-sm font-bold mb-4 border border-teal-700">
+                                ${p.tag}
+                            </div>
+                            <p class="text-slate-300 text-sm">
+                                "스타트업의 니즈와 COALAB의 전문성이 가장 잘 부합하는 영역입니다."
+                            </p>
+                        </div>
+                    </div>
+                `;
+                contentDiv.innerHTML = html;
+                // Fade in
+                contentDiv.style.opacity = '1';
+            }, 200);
+        }
+
+        // 4. Impact Simulator Logic & Chart
+        let impactChart = null;
+
+        function initImpactChart() {
+            const ctx = document.getElementById('impactChart').getContext('2d');
+            impactChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['현재 총 업무시간', 'AI 도입 후 예상 시간'],
+                    datasets: [{
+                        label: '월간 소요 시간 (시간)',
+                        data: [600, 420], // Initial dummy values
+                        backgroundColor: [
+                            'rgba(148, 163, 184, 0.5)', // Slate-400
+                            'rgba(13, 148, 136, 0.8)'  // Teal-600
+                        ],
+                        borderColor: [
+                            'rgb(148, 163, 184)',
+                            'rgb(13, 148, 136)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.parsed.y + ' 시간';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: 'rgba(0, 0, 0, 0.05)' }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+            updateSimulation(); // Run initial calc
+        }
+
+        function updateSimulation() {
+            const employees = parseInt(document.getElementById('employeeCount').value);
+            const hoursPerWeek = parseInt(document.getElementById('hoursCount').value);
+            
+            // Update UI Labels
+            document.getElementById('employeeVal').innerText = employees + '명';
+            document.getElementById('hoursVal').innerText = hoursPerWeek + '시간';
+
+            // Calculation Logic (Monthly)
+            // 4 weeks per month
+            const totalCurrentHours = employees * hoursPerWeek * 4;
+            const efficiencyGain = 0.30; // 30% improvement
+            const savedHours = Math.round(totalCurrentHours * efficiencyGain);
+            const totalNewHours = totalCurrentHours - savedHours;
+            
+            const moneySaved = savedHours * 15000; // Assume 15,000 KRW hourly value
+
+            // Update Text Results
+            document.getElementById('savedTimeResult').innerText = savedHours.toLocaleString() + ' 시간';
+            document.getElementById('moneySaved').innerText = moneySaved.toLocaleString();
+
+            // Update Chart
+            if (impactChart) {
+                impactChart.data.datasets[0].data = [totalCurrentHours, totalNewHours];
+                impactChart.update();
+            }
+        }
+
+        // Event Listeners for Simulator
+        document.getElementById('employeeCount').addEventListener('input', updateSimulation);
+        document.getElementById('hoursCount').addEventListener('input', updateSimulation);
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Initialization
+        window.addEventListener('DOMContentLoaded', () => {
+            // Init Radar Chart
+            new Chart(document.getElementById('competencyChart'), radarConfig);
+            
+            // Init Content
+            switchTab('proposal1');
+            
+            // Init Simulator Chart
+            initImpactChart();
+        });
+
+    </script>
+</body>
+</html>
