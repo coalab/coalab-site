@@ -7,6 +7,36 @@
     <title>COALAB</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css" />
+    
+    <!-- CTA 버튼을 위한 임시 스타일 (style.css에 통합해야 함) -->
+    <style>
+        .cta-area {
+            margin-top: 40px;
+            text-align: center;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #008080; /* 강조색 */
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: bold;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 128, 128, 0.3);
+            transition: all 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #006666;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 18px rgba(0, 0, 0, 0.2);
+        }
+        /* 기존 hero section의 스타일을 위해 임시로 추가된 부분 */
+        .hero {
+            padding: 80px 20px;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -28,12 +58,6 @@
     <section class="hero" id="hero">
         <h2>AI와 디지털 기술로 만드는 새로운 경험</h2>
         <p>COALAB은 교육·콘텐츠·웹서비스를 연결하는 디지털 전문 기업입니다.</p>
-    </section>
-
-  <!-- ✅ Hero Section -->
-    <section class="hero" id="hero">
-        <h2>AI와 디지털 기술로 만드는 새로운 경험</h2>
-        <p>COALAB은 교육·콘텐츠·웹서비스를 연결하는 디지털 전문 기업입니다.</p>
         
         <!-- 🔥🔥🔥 메인 페이지 CTA 추가 (가장 눈에 띄는 부분) 🔥🔥🔥 -->
         <div class="cta-area">
@@ -44,7 +68,8 @@
         <!-- 🔥🔥🔥 End CTA 🔥🔥🔥 -->
 
     </section>
-    
+
+
     <!-- ✅ 서비스 Section -->
     <section class="section" id="services">
         <h3>COALAB 대표 서비스</h3>
@@ -184,7 +209,3 @@
 
 </body>
 </html>
-
-
-
-
