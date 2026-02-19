@@ -496,7 +496,7 @@ footer .policy-link:hover {
 .apply-section {
   text-align: center;
   padding: 60px 20px;
-  background: linear-gradient(135deg, #f6f9ff 0%, #ffffff 100%);
+  background: linear-gradient(135deg, #f5faf7 0%, #ffffff 100%);
   border-top: 1px solid #eee;
 }
 
@@ -513,16 +513,16 @@ footer .policy-link:hover {
 }
 
 .apply-btn {
-  background: #0066ff;
+  background: #5ccc88;
   color: white;
   border: none;
   padding: 12px 26px;
-  border-radius: 8px;
+  border-radius: 28px;
   font-size: 16px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .apply-btn:hover {
-  background: #004ecc;
+  background: #4dbb8b;
 }
