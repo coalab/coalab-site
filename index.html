@@ -8,6 +8,7 @@
     <meta name="description" content="COALAB은 기업교육·대학·학교·평생교육원 대상 AI 실무 교육 전문 기업입니다. 내일배움카드, 파주시 지역연계, 온라인 강의 문의 환영.">
     <meta name="keywords" content="AI교육, 기업교육, 내일배움카드, 코아랩, COALAB, 파주시AI교육, SQL교육, 평생교육원">
     <meta name="author" content="COALAB">
+    <meta name="theme-color" content="#FBF9F5">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="COALAB">
     <meta property="og:title" content="COALAB | AI·디지털 교육 전문">
@@ -15,80 +16,9 @@
     <meta property="og:url" content="https://www.coalab.co.kr">
     <link rel="canonical" href="https://www.coalab.co.kr">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/style.css" />
 
-    <style>
-        .logo-img { height: 45px; width: auto; }
-        header h1 { display: flex; align-items: center; line-height: 1; }
-
-        /* Hero CTA */
-        .cta-area { margin-top: 40px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-        .cta-button {
-            display: inline-block; padding: 18px 35px;
-            background-color: #5ccc88; color: white; text-decoration: none;
-            font-size: 1.1em; font-weight: 700; border-radius: 28px;
-            box-shadow: 0 6px 18px rgba(92,204,136,0.4); transition: all 0.3s;
-        }
-        .cta-button:hover { background-color: #4dbb8b; transform: translateY(-3px); }
-        .cta-button.secondary {
-            background: transparent; border: 2px solid #5ccc88; color: #5ccc88;
-            box-shadow: none;
-        }
-        .cta-button.secondary:hover { background: rgba(92,204,136,0.1); }
-
-        /* 서비스 카드 */
-        .card h4 { color: #4dbb8b; font-size: 1.15em; margin-bottom: 8px; }
-        .card .badge {
-            display: inline-block; font-size: 11px; font-weight: 700;
-            padding: 3px 10px; border-radius: 4px; margin-bottom: 12px;
-            background: #e8f5ef; color: #2d8659;
-        }
-        .card .badge.active { background: #2d8659; color: #fff; }
-        .details-link { color: #5ccc88; font-weight: 600; text-decoration: none; display: inline-block; margin-top: 12px; }
-        .details-link:hover { color: #4dbb8b; text-decoration: underline; }
-        .emoji { font-size: 2.2em; margin-bottom: 10px; }
-
-        /* 카카오 CTA 배너 */
-        .kakao-banner {
-            background: linear-gradient(135deg, #1a4d3a 0%, #2d8659 100%);
-            border-radius: 16px; padding: 32px; text-align: center;
-            margin: 48px auto; max-width: 800px;
-        }
-        .kakao-banner h3 { color: #fff; font-size: 1.5em; margin: 0 0 8px; }
-        .kakao-banner p { color: rgba(255,255,255,0.85); margin: 0 0 24px; font-size: 0.95em; }
-        .kakao-btn {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: #fee500; color: #191919; font-size: 1.05em; font-weight: 700;
-            padding: 14px 32px; border-radius: 12px; text-decoration: none;
-            transition: opacity 0.2s;
-        }
-        .kakao-btn:hover { opacity: 0.9; }
-
-        /* ai-news 배너 */
-        .ainews-banner {
-            background: #111827; border-radius: 16px; padding: 28px 32px;
-            display: flex; align-items: center; justify-content: space-between;
-            flex-wrap: wrap; gap: 16px; margin: 32px auto; max-width: 900px;
-        }
-        .ainews-banner .text strong { display: block; color: #fff; font-size: 1.1em; font-weight: 800; margin-bottom: 4px; }
-        .ainews-banner .text span { color: #9ca3af; font-size: 0.9em; }
-        .ainews-btn {
-            display: inline-flex; align-items: center; gap: 6px;
-            background: #2d8659; color: #fff; font-size: 0.95em; font-weight: 700;
-            padding: 12px 24px; border-radius: 10px; text-decoration: none;
-            white-space: nowrap; transition: background 0.2s;
-        }
-        .ainews-btn:hover { background: #1a4d3a; }
-
-        /* 블로그 배너 */
-        .blog-strip {
-            text-align: center; padding: 20px;
-            border: 2px solid rgba(92,204,136,0.3); border-radius: 12px;
-            margin: 16px auto; max-width: 900px;
-        }
-        .blog-strip a { color: #4dbb8b; font-weight: 700; font-size: 1em; text-decoration: none; }
-        .blog-strip a:hover { text-decoration: underline; }
-    </style>
+    <!-- CSS 수정할 때마다 ?v= 뒤 날짜만 바꾸면 캐시가 강제로 갱신됩니다 -->
+    <link rel="stylesheet" href="./assets/css/style.css?v=20260815" />
 </head>
 
 <body>
@@ -96,15 +26,15 @@
     <!-- Header -->
     <header>
         <h1>
-            <img src="./assets/img/logo.png" alt="COALAB 로고" class="logo-img">
+            <a href="#hero"><img src="./assets/img/logo.png" alt="COALAB 로고" class="logo-img"></a>
         </h1>
         <nav>
             <a href="#hero">홈</a>
             <a href="#services">교육 과정</a>
             <a href="#team">팀 소개</a>
-            <a href="https://ai-news.coalab.co.kr" target="_blank">AI 뉴스</a>
-            <a href="https://blog.naver.com/valuablethings" target="_blank">블로그</a>
-            <a href="https://open.kakao.com/o/sZhJVf7" target="_blank" style="background:#5ccc88;color:#fff;padding:6px 16px;border-radius:20px;font-weight:700;">💬 강의 문의</a>
+            <a href="https://ai-news.coalab.co.kr" target="_blank" rel="noopener">AI 뉴스</a>
+            <a href="https://blog.naver.com/valuablethings" target="_blank" rel="noopener">블로그</a>
+            <a href="https://open.kakao.com/o/sZhJVf7" target="_blank" rel="noopener" class="nav-cta">강의 문의</a>
         </nav>
     </header>
 
@@ -114,10 +44,10 @@
         <p>COALAB은 기업·대학·학교·평생교육원 대상 AI 실무 교육 전문 기업입니다.</p>
 
         <div class="cta-area">
-            <a href="https://open.kakao.com/o/sZhJVf7" target="_blank" class="cta-button">
+            <a href="https://open.kakao.com/o/sZhJVf7" target="_blank" rel="noopener" class="cta-button">
                 💬 카카오톡으로 강의 문의
             </a>
-            <a href="https://ai-news.coalab.co.kr" target="_blank" class="cta-button secondary">
+            <a href="https://ai-news.coalab.co.kr" target="_blank" rel="noopener" class="cta-button secondary">
                 📰 매일 AI 뉴스 보기
             </a>
         </div>
@@ -128,69 +58,64 @@
         <h3>COALAB 교육 과정</h3>
 
         <div class="cards">
-            <!-- 1. 기업교육 -->
             <div class="card">
                 <div class="emoji">🏢</div>
                 <span class="badge active">진행중</span>
                 <h4>기업교육 · 내일배움카드</h4>
                 <p>ChatGPT·AI 자동화·SQL 최적화 등 실무 중심 기업 맞춤 교육. 내일배움카드 과정 운영.</p>
                 <div class="meta">
-                    <div class="meta-item">👥 <span>기업 실무자</span></div>
-                    <div class="meta-item">📋 <span>맞춤 설계</span></div>
+                    <span class="meta-item">👥 기업 실무자</span>
+                    <span class="meta-item">📋 맞춤 설계</span>
                 </div>
-                <a class="details-link" href="https://open.kakao.com/o/sZhJVf7" target="_blank">💬 교육 문의 →</a>
+                <a class="details-link" href="https://open.kakao.com/o/sZhJVf7" target="_blank" rel="noopener">💬 교육 문의 →</a>
             </div>
 
-            <!-- 2. 대학 전문교육 -->
             <div class="card">
                 <div class="emoji">🎓</div>
                 <span class="badge active">진행중</span>
                 <h4>대학 전문교육</h4>
                 <p>대학 정규·특강 과정. AI 실무, 데이터 분석, 웹 개발 등 전공 연계 프로그램.</p>
                 <div class="meta">
-                    <div class="meta-item">👥 <span>대학생·대학원생</span></div>
-                    <div class="meta-item">⏱️ <span>학기 단위</span></div>
+                    <span class="meta-item">👥 대학생·대학원생</span>
+                    <span class="meta-item">⏱️ 학기 단위</span>
                 </div>
-                <a class="details-link" href="https://open.kakao.com/o/sZhJVf7" target="_blank">💬 강의 문의 →</a>
+                <a class="details-link" href="https://open.kakao.com/o/sZhJVf7" target="_blank" rel="noopener">💬 강의 문의 →</a>
             </div>
 
-            <!-- 3. 학교 지역연계 -->
             <div class="card">
                 <div class="emoji">🏫</div>
                 <span class="badge active">6월 본격 시작</span>
                 <h4>학교 지역연계 (파주시)</h4>
                 <p>파주시 초·중·고 AI 교육 지역연계 사업. 학생 대상 AI 창작·코딩·데이터 프로그램.</p>
                 <div class="meta">
-                    <div class="meta-item">👥 <span>초·중·고 학생</span></div>
-                    <div class="meta-item">📍 <span>파주시</span></div>
+                    <span class="meta-item">👥 초·중·고 학생</span>
+                    <span class="meta-item">📍 파주시</span>
                 </div>
-                <a class="details-link" href="https://open.kakao.com/o/sZhJVf7" target="_blank">💬 연계 문의 →</a>
+                <a class="details-link" href="https://open.kakao.com/o/sZhJVf7" target="_blank" rel="noopener">💬 연계 문의 →</a>
             </div>
 
-            <!-- 4. 평생교육원 -->
             <div class="card">
                 <div class="emoji">📚</div>
                 <span class="badge active">진행중</span>
                 <h4>평생교육원</h4>
                 <p>성인 대상 AI 리터러시·ChatGPT 활용·디지털 전환 실무 과정. 누구나 쉽게 시작.</p>
                 <div class="meta">
-                    <div class="meta-item">👥 <span>성인 일반</span></div>
-                    <div class="meta-item">⏱️ <span>4~8주</span></div>
+                    <span class="meta-item">👥 성인 일반</span>
+                    <span class="meta-item">⏱️ 4~8주</span>
                 </div>
-                <a class="details-link" href="https://open.kakao.com/o/sZhJVf7" target="_blank">💬 수강 문의 →</a>
+                <a class="details-link" href="https://open.kakao.com/o/sZhJVf7" target="_blank" rel="noopener">💬 수강 문의 →</a>
             </div>
 
-            <!-- 5. 온라인 강의 & 교재 -->
             <div class="card">
                 <div class="emoji">💻</div>
                 <span class="badge">준비중</span>
                 <h4>온라인 강의 · 교재 출판</h4>
                 <p>온라인 강의 플랫폼 오픈 예정. 교재 출판: <strong>GPT를 활용한 SQL 최적화방안</strong> 외 2권.</p>
                 <div class="meta">
-                    <div class="meta-item">📘 <span>교재 3권 준비중</span></div>
-                    <div class="meta-item">🖥️ <span>온라인</span></div>
+                    <span class="meta-item">📘 교재 3권 준비중</span>
+                    <span class="meta-item">🖥️ 온라인</span>
                 </div>
-                <a class="details-link" href="https://open.kakao.com/o/sZhJVf7" target="_blank">💬 사전 등록 문의 →</a>
+                <a class="details-link" href="https://open.kakao.com/o/sZhJVf7" target="_blank" rel="noopener">💬 사전 등록 문의 →</a>
             </div>
         </div>
     </section>
@@ -264,7 +189,7 @@
             <div class="about-info">
                 <h3>COALAB의<br><span>AI 기술 선도</span></h3>
                 <p>교육·콘텐츠·데이터 기술을 기반으로 최신 AI 트렌드를 분석하고 실제 프로젝트에 적용하며 혁신을 주도합니다.</p>
-                <a href="https://ai-news.coalab.co.kr" target="_blank" class="about-btn">
+                <a href="https://ai-news.coalab.co.kr" target="_blank" rel="noopener" class="about-btn">
                     AI 뉴스 최신 동향 확인 →
                 </a>
             </div>
@@ -275,11 +200,11 @@
     <footer>
         <h4>COALAB</h4>
         <div class="social">
-            <a href="https://ai-news.coalab.co.kr" target="_blank" style="color:inherit;text-decoration:none">📰 AI뉴스</a>
+            <a href="https://ai-news.coalab.co.kr" target="_blank" rel="noopener">📰 AI뉴스</a>
             &nbsp;·&nbsp;
-            <a href="https://blog.naver.com/valuablethings" target="_blank" style="color:inherit;text-decoration:none">📝 블로그</a>
+            <a href="https://blog.naver.com/valuablethings" target="_blank" rel="noopener">📝 블로그</a>
             &nbsp;·&nbsp;
-            <a href="https://open.kakao.com/o/sZhJVf7" target="_blank" style="color:inherit;text-decoration:none">💬 문의</a>
+            <a href="https://open.kakao.com/o/sZhJVf7" target="_blank" rel="noopener">💬 문의</a>
         </div>
         <p>© 2026 COALAB. All rights reserved.</p>
         <div class="policy">
