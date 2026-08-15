@@ -355,6 +355,76 @@ footer .policy-link:hover { color: #B4DDC3; }
 .instructor-card h4 { margin: 10px 0 6px; font-weight: 700; color: var(--ink); }
 .instructor-card p { font-size: 14px; color: var(--ink-2); line-height: 1.6; margin-bottom: 15px; }
 
+/* 대표 소개 */
+.founder {
+  background: var(--bg-soft);
+  padding: 100px 60px;
+  text-align: center;
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+}
+.founder h3 { font-size: 30px; font-weight: 700; margin-bottom: 15px; color: var(--ink); letter-spacing: -0.02em; }
+.founder > p { color: var(--ink-2); font-size: 15px; margin-bottom: 60px; }
+
+.founder-brief { max-width: 780px; margin: 0 auto 36px; text-align: center; }
+.founder-brief h4 { font-size: 24px; margin: 0 0 8px; color: var(--ink); }
+.founder-brief h4 span { display: block; font-size: 14px; font-weight: 500; color: var(--brand-deep); margin-top: 6px; }
+.founder-brief p { font-size: 14.5px; color: var(--ink-2); line-height: 1.7; margin: 0; }
+
+/* 강의 이력 (다크 카드) */
+.lecture-card {
+  max-width: 1080px;
+  margin: 0 auto;
+  background: #10141F;
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  box-shadow: var(--shadow-lg);
+  text-align: left;
+}
+.lecture-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 26px;
+}
+.lf-tag {
+  background: rgba(255,255,255,0.04);
+  color: #B9C2D9;
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-pill);
+  padding: 8px 18px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+.lf-tag:hover { border-color: #6FA8FF; color: #fff; }
+.lf-tag.active { background: #2E5AE8; border-color: #2E5AE8; color: #fff; }
+
+.lecture-table-wrap { overflow-x: auto; }
+.lecture-table { width: 100%; border-collapse: collapse; min-width: 620px; }
+.lecture-table thead th {
+  text-align: left;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #7C87A3;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  white-space: nowrap;
+}
+.lecture-table tbody td {
+  font-size: 14px;
+  color: #D6DBEA;
+  padding: 16px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  line-height: 1.5;
+}
+.lecture-table tbody tr:hover { background: rgba(255,255,255,0.03); }
+.lecture-table tbody td strong { color: #fff; font-weight: 700; }
+.lecture-table tbody td:first-child { white-space: nowrap; color: #8F98B3; }
+.lecture-table tbody td:last-child { white-space: nowrap; color: #8F98B3; text-align: right; }
+
 /* 태그 */
 .tags { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
 .tag {
@@ -526,7 +596,7 @@ footer .policy-link:hover { color: #B4DDC3; }
 
 /* 반응형 */
 @media (max-width: 1140px) {
-  .section, .instructors { padding: 80px 40px; }
+  .section, .instructors, .founder { padding: 80px 40px; }
   .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 720px; }
   .instructor-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 560px; }
   .kakao-banner, .ainews-banner, .blog-strip { margin-left: 40px; margin-right: 40px; }
@@ -541,8 +611,12 @@ footer .policy-link:hover { color: #B4DDC3; }
   .hero h2 { font-size: 28px; max-width: none; }
   .hero p { font-size: 16px; }
   .cta-button { padding: 13px 24px; font-size: 15px; }
-  .section, .instructors { padding: 60px 20px; }
+  .section, .instructors, .founder { padding: 60px 20px; }
   .section h3 { margin-bottom: 40px; }
+  .founder-profile { flex-direction: column; align-items: center; text-align: center; padding: 32px 24px; }
+  .lecture-card { padding: 24px 18px; }
+  .lecture-filters { gap: 8px; }
+  .lf-tag { padding: 7px 14px; font-size: 12.5px; }
   .about-header { padding: 60px 20px 30px; }
   .about-scroll { flex-direction: column; gap: 40px; padding: 20px 20px 70px; }
   .scroll-container { width: 100%; max-width: 520px; height: 300px; }
