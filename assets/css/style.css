@@ -373,7 +373,7 @@ footer .policy-link:hover { color: #B4DDC3; }
 
 /* 강의 이력 요약 (다크 카드) */
 .lecture-card {
-  max-width: 900px;
+  max-width: 640px;
   margin: 0 auto;
   background: #10141F;
   border-radius: var(--radius-lg);
@@ -381,27 +381,16 @@ footer .policy-link:hover { color: #B4DDC3; }
   box-shadow: var(--shadow-lg);
   text-align: center;
 }
-.lecture-summary-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-}
-.ls-item {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: var(--radius);
-  padding: 22px 10px;
-}
-.ls-item strong {
+.lecture-stat strong {
   display: block;
-  font-size: 26px;
+  font-size: 48px;
   font-weight: 800;
   color: #fff;
-  margin-bottom: 6px;
+  line-height: 1.1;
 }
-.ls-item span { font-size: 13px; color: #A6B0C8; }
+.lecture-stat span { font-size: 14px; color: #A6B0C8; }
 .lecture-summary-note {
-  margin: 28px 0 0;
+  margin: 18px 0 0;
   font-size: 13.5px;
   color: #8F98B3;
   line-height: 1.6;
@@ -597,7 +586,7 @@ footer .policy-link:hover { color: #B4DDC3; }
   .section h3 { margin-bottom: 40px; }
   .founder-profile { flex-direction: column; align-items: center; text-align: center; padding: 32px 24px; }
   .lecture-card { padding: 28px 20px; }
-  .lecture-summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lecture-stat strong { font-size: 38px; }
   .about-header { padding: 60px 20px 30px; }
   .about-scroll { flex-direction: column; gap: 40px; padding: 20px 20px 70px; }
   .scroll-container { width: 100%; max-width: 520px; height: 300px; }
