@@ -425,6 +425,25 @@ footer .policy-link:hover { color: #B4DDC3; }
   color: var(--ink-2);
   line-height: 1.5;
 }
+.satisfaction-quote {
+  max-width: 640px;
+  margin: 32px auto 0;
+  padding: 24px 28px;
+  background: var(--brand-tint);
+  border-left: 3px solid var(--brand);
+  border-radius: var(--radius);
+  font-size: 15px;
+  color: var(--ink);
+  line-height: 1.7;
+  text-align: left;
+}
+.satisfaction-quote cite {
+  display: block;
+  margin-top: 12px;
+  font-size: 13px;
+  font-style: normal;
+  color: var(--ink-3);
+}
 .satisfaction-note {
   margin-top: 28px;
   font-size: 12.5px;
