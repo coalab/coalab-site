@@ -5,23 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>회사소개 | COALAB</title>
 <meta name="description" content="COALAB(코아랩)은 초·중·고 학교교육을 중심으로 기업 AX·창업교육, 지역주민교육, 대학·평생교육원 대상 AI 실무 교육, 교재 출판, AI 뉴스를 운영하는 교육 콘텐츠 기업입니다.">
+<link rel="canonical" href="https://coalab.co.kr/about.html">
 <meta property="og:title" content="회사소개 | COALAB">
 <meta property="og:description" content="AI를 아는 것에서 쓰는 것까지, 현장에서 끝까지 함께합니다.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#FBF9F5">
-<link rel="canonical" href="https://coalab.co.kr/about.html">
 <style>
   :root{
-    --bg:#FBF9F5; --ink:#1f2328; --muted:#6b6f76; --line:#e7e2d9;
-    --accent:#2f5d50; --accent-soft:#e8f0ed; --card:#ffffff;
+    --bg:#FBF9F5; --soft:#F5F1E8; --ink:#2C2A25; --muted:#6b6a63; --line:#E9E3D6;
+    --brand:#33835A; --deep:#2A6E4A; --tint:#E6F0E8; --light:#8FC9A6; --dark:#1E2A24; --dark2:#2B302B;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{font-family:'Pretendard','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;word-break:keep-all}
+  body{font-family:'Pretendard','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;word-break:keep-all;-webkit-font-smoothing:antialiased}
   a{color:inherit;text-decoration:none}
-  .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+  section{padding:104px 0}
+  .eyebrow{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--brand);font-weight:800;margin-bottom:16px}
+  h1{font-size:clamp(36px,5.6vw,66px);line-height:1.2;font-weight:900;letter-spacing:-.03em}
+  h2{font-size:clamp(28px,3.8vw,44px);line-height:1.28;font-weight:900;letter-spacing:-.025em;margin-bottom:16px}
+  h3{font-weight:800}
+  .sub{color:var(--muted);font-size:17px;max-width:660px;margin-bottom:48px}
   .topbar{background:var(--bg);border-bottom:1px solid var(--line);font-size:13px;color:var(--accent)}
-  .topbar .wrap{display:flex;justify-content:flex-end;align-items:center;gap:6px;height:42px}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:6px;height:42px}
   .soc{display:flex;align-items:center;gap:14px}
   .soc .brand{font-weight:800;letter-spacing:.06em;font-size:15px;color:var(--accent);margin-right:6px}
   .soc a.ic{display:inline-flex;width:22px;height:22px;color:var(--accent);transition:color .15s,transform .15s}
@@ -35,73 +42,150 @@
   .util a:last-child{padding-right:0}
   .util a:hover{color:#1f4036}
   .util svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-  header.nav{position:sticky;top:0;background:rgba(251,249,245,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10}
-  .nav .navrow{display:flex;align-items:center;justify-content:space-between;height:60px}
-  .logo{font-weight:800;letter-spacing:.04em;font-size:20px}
-  .nav ul{display:flex;gap:22px;list-style:none;font-size:15px}
-  .nav ul a:hover,.nav ul a.on{color:var(--accent);font-weight:600}
-  section{padding:84px 0}
-  .eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:14px}
-  h1{font-size:clamp(30px,5vw,48px);line-height:1.3;font-weight:800;letter-spacing:-.02em}
-  h2{font-size:clamp(24px,3.4vw,34px);line-height:1.35;font-weight:800;letter-spacing:-.01em;margin-bottom:12px}
-  .lead{margin-top:22px;font-size:18px;color:#3b4047;max-width:680px}
-  .lead b{color:var(--accent)}
-  .hero{padding:96px 0 72px}
-  .sub{color:var(--muted);max-width:640px;margin-bottom:36px}
-  .vm{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  .vm .card{padding:34px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:18px}
-  .vm .tag{font-weight:800;color:var(--accent);margin-bottom:10px}
-  .vm p.big{font-size:20px;font-weight:700;line-height:1.5;margin-bottom:14px}
-  .vm p.s{color:var(--muted);font-size:15px}
-  .values{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
-  .values .card{padding:28px}
-  .values .ico{font-size:28px}
-  .values .en{font-size:12px;letter-spacing:.12em;color:var(--accent);font-weight:700;margin-top:12px}
-  .values h3{font-size:19px;margin:4px 0 8px}
-  .values p{color:var(--muted);font-size:15px}
-  .arms{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
-  .arms .card{padding:28px}
-  .arms h3{font-size:18px;margin-bottom:6px}
-  .arms p{color:var(--muted);font-size:15px;margin-bottom:14px}
-  .arms a{color:var(--accent);font-weight:600;font-size:14px}
-  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;text-align:center}
-  .stats .card{padding:28px 16px}
-  .stats .n{font-size:38px;font-weight:800;color:var(--accent);line-height:1.1}
-  .stats .l{color:var(--muted);font-size:14px;margin-top:8px}
-  .note{font-size:13px;color:var(--muted);margin-top:14px}
-  .timeline{position:relative;margin-top:36px;padding-left:28px;border-left:2px solid var(--line)}
-  .tl{position:relative;margin-bottom:34px}
-  .tl::before{content:"";position:absolute;left:-36px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
-  .tl .y{font-size:22px;font-weight:800}
-  .tl h3{font-size:17px;margin:2px 0 6px}
-  .tl p{color:var(--muted);font-size:15px}
-  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-  .chip{background:var(--accent-soft);color:var(--accent);padding:9px 16px;border-radius:999px;font-size:14px;font-weight:600}
-  .cta{background:var(--accent);color:#fff;border-radius:24px;padding:56px 32px;text-align:center}
-  .cta h2{color:#fff}
-  .cta p{opacity:.85;margin-bottom:26px}
-  .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-  .btn{display:inline-block;padding:14px 26px;border-radius:12px;font-weight:700;background:#fff;color:var(--accent)}
-  .btn.o{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.6)}
-  footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-size:13px;line-height:1.8}
-  .school{background:var(--accent);color:#fff;border-radius:28px;padding:56px 44px}
-  .school .eyebrow{color:#cfe3dc}
+  header.nav{position:sticky;top:0;background:rgba(251,249,245,.96);backdrop-filter:blur(8px);z-index:20}
+  .nav .navrow{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:76px;border-bottom:1px solid var(--line)}
+  .nav .logoimg{height:46px;width:auto}
+  .nav ul{display:flex;gap:46px;list-style:none;font-size:16px;font-weight:600}
+  .nav ul a{display:inline-block;padding:8px 2px;border-bottom:2px solid transparent}
+  .nav ul a:hover{color:var(--brand)}
+  .nav ul a.on{font-weight:800;color:var(--ink);border-bottom-color:var(--brand)}
+  .nav .cta-btn{justify-self:end;background:var(--brand);color:#fff;font-weight:800;font-size:14px;padding:11px 22px;border-radius:999px;transition:background .15s}
+  .nav .cta-btn:hover{background:var(--deep)}
+
+  /* HERO */
+  .hero{background:linear-gradient(135deg,var(--dark) 0%,#24412f 55%,var(--deep) 100%);color:#fff;padding:96px 0 0;position:relative;overflow:hidden}
+  .hero .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .hero .eyebrow{color:var(--light)}
+  .hero h1 em{font-style:normal;color:var(--light)}
+  .hero .lead{margin-top:28px;font-size:19px;color:#dfe9e3;max-width:560px}
+  .hero .lead b{color:#fff}
+  .shots{position:relative;height:420px}
+  .shots img{position:absolute;border-radius:20px;box-shadow:0 24px 60px rgba(0,0,0,.45);border:4px solid rgba(255,255,255,.9);object-fit:cover}
+  .shots .a{width:78%;height:260px;right:0;top:0;transform:rotate(2deg)}
+  .shots .b{width:62%;height:200px;left:0;bottom:0;transform:rotate(-3deg)}
+  .heroStats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:88px;border-top:1px solid rgba(255,255,255,.18)}
+  .heroStats div{padding:34px 20px 34px 0}
+  .heroStats div+div{padding-left:28px;border-left:1px solid rgba(255,255,255,.14)}
+  .heroStats .n{font-size:clamp(38px,4.6vw,58px);font-weight:900;color:var(--light);line-height:1;letter-spacing:-.02em}
+  .heroStats .l{margin-top:10px;font-size:14px;color:#cfdcd4}
+  .heroNote{font-size:12.5px;color:#a9bdb1;padding-bottom:28px}
+
+  /* VISION */
+  .vm{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:3px solid var(--ink)}
+  .vm>div{padding:44px 40px 44px 0}
+  .vm>div+div{padding-left:44px;border-left:1px solid var(--line)}
+  .vm .tag{font-weight:900;color:var(--brand);font-size:15px;letter-spacing:.12em;margin-bottom:18px}
+  .vm .big{font-size:clamp(24px,2.8vw,34px);font-weight:900;line-height:1.4;letter-spacing:-.02em;margin-bottom:18px}
+  .vm .s{color:var(--muted);font-size:16px}
+
+  /* SCHOOL */
+  .school{background:var(--deep);color:#fff}
+  .school .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+  .school .eyebrow{color:var(--light)}
   .school h2{color:#fff}
-  .school .lead2{opacity:.9;max-width:720px;margin-bottom:30px}
-  .sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-  .sgrid .it{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:16px;padding:20px}
-  .sgrid .it b{display:block;font-size:16px;margin-bottom:4px}
-  .sgrid .it span{font-size:14px;opacity:.85}
-  .sbadges{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-  .sbadges span{background:#fff;color:var(--accent);padding:8px 16px;border-radius:999px;font-size:14px;font-weight:700}
-  @media(max-width:720px){
+  .school .ph{position:sticky;top:110px}
+  .school .ph img{width:100%;border-radius:24px;box-shadow:0 30px 70px rgba(0,0,0,.4);aspect-ratio:4/3;object-fit:cover}
+  .school .tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+  .school .tags span{border:1px solid rgba(255,255,255,.45);padding:7px 16px;border-radius:999px;font-size:14px;font-weight:700}
+  .school .lead2{font-size:18px;color:#dbeae1;margin-bottom:34px}
+  .plist{border-top:1px solid rgba(255,255,255,.28)}
+  .prow{display:grid;grid-template-columns:54px 1fr;gap:6px 14px;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.2)}
+  .prow .no{font-size:15px;font-weight:900;color:var(--light);padding-top:3px}
+  .prow b{font-size:19px;font-weight:800}
+  .prow span{grid-column:2;color:#cfe3d7;font-size:15px}
+  .prow a{grid-column:2;color:#fff;font-weight:800;font-size:14px;text-decoration:underline;margin-top:2px}
+
+  /* VALUES */
+  .values{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+  .values .v{border-top:4px solid var(--brand);padding-top:24px}
+  .values .no{font-size:44px;font-weight:900;color:var(--brand);line-height:1;letter-spacing:-.03em}
+  .values .en{font-size:12px;letter-spacing:.14em;color:var(--muted);font-weight:800;margin:18px 0 6px}
+  .values h3{font-size:21px;margin-bottom:10px;letter-spacing:-.02em}
+  .values p{color:var(--muted);font-size:15px}
+
+  /* AXES (dark) */
+  .axes{background:var(--dark2);color:#fff}
+  .axes h2{color:#fff}
+  .axes .sub{color:#b9c4bd}
+  .axes .eyebrow{color:var(--light)}
+  .axesGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(255,255,255,.2)}
+  .axis{padding:36px 32px 12px 0}
+  .axis+.axis{padding-left:32px;border-left:1px solid rgba(255,255,255,.14)}
+  .axis .ic{font-size:34px}
+  .axis h3{font-size:22px;margin:14px 0 10px}
+  .axis p{color:#c4cfc8;font-size:15px;margin-bottom:18px}
+  .axis a{color:var(--light);font-weight:800;font-size:14px}
+
+  /* PROGRAM CARDS */
+  .pcards{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .pc{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+  .pc:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(42,110,74,.14)}
+  .pc img{width:100%;height:170px;object-fit:cover}
+  .pc .bd{padding:24px 22px 26px;flex:1;display:flex;flex-direction:column}
+  .pc h3{font-size:19px;margin-bottom:8px;letter-spacing:-.02em}
+  .pc p{color:var(--muted);font-size:14.5px;flex:1}
+  .pc .badge{display:inline-block;align-self:flex-start;background:var(--tint);color:var(--deep);font-size:12px;font-weight:800;padding:4px 10px;border-radius:999px;margin-bottom:12px}
+  .pc a{margin-top:16px;color:var(--brand);font-weight:800;font-size:14px}
+
+  /* JOURNEY */
+  .journey{background:var(--soft)}
+  .tl{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:34px 0;border-top:1px solid #d9d2c1}
+  .tl:last-of-type{border-bottom:1px solid #d9d2c1}
+  .tl .y{font-size:clamp(44px,6vw,72px);font-weight:900;color:var(--brand);line-height:1;letter-spacing:-.04em}
+  .tl h3{font-size:22px;margin-bottom:8px;letter-spacing:-.02em}
+  .tl p{color:var(--muted);font-size:16px;max-width:720px}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+  .chip{border:1.5px solid var(--deep);color:var(--deep);padding:9px 18px;border-radius:999px;font-size:14px;font-weight:800;background:transparent}
+  .chip.fill{background:var(--deep);color:#fff}
+
+  /* GALLERY */
+  .gal{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .gal figure{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/3}
+  .gal img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+  .gal figure:hover img{transform:scale(1.05)}
+  .gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 18px 14px;color:#fff;font-weight:800;font-size:15px;background:linear-gradient(transparent,rgba(0,0,0,.7))}
+
+  /* CTA */
+  .cta{background:linear-gradient(135deg,var(--dark) 0%,var(--deep) 100%);color:#fff;text-align:center;padding:96px 0}
+  .cta h2{color:#fff;font-size:clamp(28px,4.2vw,48px)}
+  .cta p{color:#cfe3d7;font-size:18px;margin-bottom:34px}
+  .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-block;padding:17px 32px;border-radius:14px;font-weight:800;font-size:16px;background:#fff;color:var(--deep)}
+  .btn.k{background:#FEE500;color:#2C2A25}
+  .btn.o{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.6)}
+
+  footer{background:var(--dark);color:#9fb0a6;padding:44px 0;font-size:13px;line-height:1.9}
+  footer b{color:#fff;font-size:15px}
+
+  @media(max-width:900px){
+    section{padding:72px 0}
+    .hero .grid,.school .grid,.vm{grid-template-columns:1fr}
+    .vm>div,.vm>div+div{padding:32px 0;border-left:0}
+    .vm>div+div{border-top:1px solid var(--line)}
+    .shots{height:340px}
+    .heroStats{grid-template-columns:repeat(2,1fr)}
+    .heroStats div:nth-child(3){padding-left:0;border-left:0}
+    .heroStats div{border-top:0}
+    .school .ph{position:static}
+    .values{grid-template-columns:repeat(2,1fr)}
+    .axesGrid{grid-template-columns:1fr}
+    .axis,.axis+.axis{padding:28px 0;border-left:0}
+    .axis+.axis{border-top:1px solid rgba(255,255,255,.14)}
+    .pcards{grid-template-columns:repeat(2,1fr)}
+    .tl{grid-template-columns:1fr;gap:8px}
+    .gal{grid-template-columns:repeat(2,1fr)}
+    .nav .navrow{grid-template-columns:auto 1fr auto;gap:12px}
+    .nav ul{gap:16px;font-size:14px;justify-content:center}
+  }
+  @media(max-width:560px){
+    .values,.pcards,.gal{grid-template-columns:1fr}
     .util a span{display:none}
     .util a{padding:0 10px}
-    .school{padding:36px 22px}
-    .vm{grid-template-columns:1fr}
-    .nav ul{gap:12px;font-size:13px}
-    section{padding:60px 0}
+    .shots{height:300px}
+    .shots .a{height:200px}.shots .b{height:150px}
+    .nav .logoimg{height:38px}
+    .nav ul li:first-child{display:none}
+    .nav .cta-btn{padding:9px 14px;font-size:13px}
   }
 </style>
 </head>
@@ -124,38 +208,52 @@
     </div>
   </div>
   <div class="wrap navrow">
-    <a class="logo" href="index.html">COALAB</a>
+    <a href="index.html"><img class="logoimg" src="./assets/img/logo.png" alt="COALAB 로고"></a>
     <ul>
+      <li><a href="index.html">코아랩</a></li>
       <li><a href="#school">학교교육</a></li>
       <li><a href="index.html#services">교육 과정</a></li>
       <li><a class="on" href="about.html">회사소개</a></li>
     </ul>
+    <a class="cta-btn" href="https://open.kakao.com/o/sZhJVf7" target="_blank" rel="noopener">문의하기</a>
   </div>
 </header>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" style="padding-bottom:0">
   <div class="wrap">
-    <div class="eyebrow">About COALAB</div>
-    <h1>AI를 아는 것에서<br>쓰는 것까지,<br>현장에서 끝까지 함께합니다</h1>
-    <p class="lead">
-      코아랩은 <b>학교</b>를 중심으로 <b>기업·대학·평생교육원·지역사회</b>에서 AI 실무 교육을 진행하고, 기업의 <b>AX(AI 전환)</b>와 <b>창업교육</b>까지 함께하는 교육 콘텐츠 기업입니다.
-      현업 개발 현장에서 쌓은 경험을 바탕으로, 배운 것이 <b>바로 일에 쓰이는 교육</b>을 만듭니다.
-    </p>
+    <div class="grid">
+      <div>
+        <div class="eyebrow">About COALAB</div>
+        <h1>AI를 아는 것에서<br><em>쓰는 것까지,</em><br>현장에서 끝까지 함께합니다</h1>
+        <p class="lead">코아랩은 <b>학교</b>를 중심으로 <b>기업·대학·평생교육원·지역사회</b>에서 AI 실무 교육을 진행하고, 기업의 <b>AX(AI 전환)</b>와 <b>창업교육</b>까지 함께하는 교육 콘텐츠 기업입니다. 현업 개발 현장에서 쌓은 경험을 바탕으로, 배운 것이 <b>바로 일에 쓰이는 교육</b>을 만듭니다.</p>
+      </div>
+      <div class="shots">
+        <img class="a" src="./assets/img/blog/blog-school-class.jpg" alt="학교로 찾아가는 AI 교육 현장" width="900" height="504">
+        <img class="b" src="./assets/img/blog/blog-citizen-program.jpg" alt="파주시 시민제안 우수프로그램 교육 현장" width="900" height="617">
+      </div>
+    </div>
+    <div class="heroStats">
+      <div><div class="n">100+</div><div class="l">누적 강의·교육 프로젝트</div></div>
+      <div><div class="n">20+</div><div class="l">함께하는 강사진<br>(SNS 인플루언서 포함)</div></div>
+      <div><div class="n">100%</div><div class="l">교육 전반 만족도 (4~5점 응답)</div></div>
+      <div><div class="n">91.7%</div><div class="l">"다시 참여하고 싶다" 응답</div></div>
+    </div>
+    <p class="heroNote">※ 만족도는 2026년 생성형 AI 교육 1·2차 참여자 설문(응답 26명/전체 39명) 기준입니다.</p>
   </div>
 </section>
 
 <!-- VISION / MISSION -->
-<section style="padding-top:0">
+<section>
   <div class="wrap">
     <div class="vm">
-      <div class="card">
-        <div class="tag">Vision.</div>
+      <div>
+        <div class="tag">VISION.</div>
         <p class="big">누구나 AI와 디지털 기술을<br>자기 일에 쓸 수 있는 세상</p>
         <p class="s">빠르게 바뀌는 기술 앞에서 누구도 뒤처지지 않도록, 어렵지 않게 시작할 수 있는 교육의 문턱을 낮춥니다.</p>
       </div>
-      <div class="card">
-        <div class="tag">Mission.</div>
+      <div>
+        <div class="tag">MISSION.</div>
         <p class="big">직접 만든 교육과 콘텐츠로<br>배움이 일의 변화가 될 때까지</p>
         <p class="s">강의로 끝내지 않고 교재, 실습 자료, AI 뉴스까지 직접 기획하고 제작해 학습자 곁에서 이어갑니다.</p>
       </div>
@@ -163,23 +261,26 @@
   </div>
 </section>
 
-<!-- SCHOOL EDUCATION (featured) -->
-<section id="school" style="padding-top:0">
+<!-- SCHOOL EDUCATION -->
+<section class="school" id="school">
   <div class="wrap">
-    <div class="school">
-      <div class="eyebrow">School Education</div>
-      <h2>학교로 찾아가는 AI·코딩 교육,<br>코아랩의 중심입니다</h2>
-      <p class="lead2">초·중·고 학교 현장에서 학생들이 직접 만들고 체험하는 수업을 운영합니다. 전국의 학교와 기관을 찾아가고, 파주시 지역연계 사업과 진로체험 체험처로도 함께하고 있습니다.</p>
-      <div class="sgrid">
-        <div class="it"><b>찾아가는 학교교육</b><span>AI 동화책 · AI 음악교실 · 드론 · 3D펜 등 학교로 직접 찾아가는 체험형 수업</span><a href="http://storybooks.coalab.co.kr/" style="display:inline-block;margin-top:10px;font-size:14px;font-weight:700;text-decoration:underline">코아랩 스토리북 보기 →</a></div>
-        <div class="it"><b>AI·코딩 진로체험</b><span>꿈길 체험처 · 고등학교 AI 진로체험 · 학교로 찾아가는 AI·코딩 진로체험</span></div>
-        <div class="it"><b>파주시 학교 지역연계</b><span>파주시 초·중·고 대상 AI 창작·코딩·데이터 프로그램, 진로체험센터·미래교육 기관 MOU</span></div>
-        <div class="it"><b>디지털새싹 · AI 동아리</b><span>블록코딩·데이터분석 실습 중심 디지털새싹교육과 학교 AI 동아리 운영</span></div>
-        <div class="it"><b>발명·메이커 수업</b><span>중학생 발명대회 지도 등 직접 만들며 배우는 메이커 프로그램</span></div>
-        <div class="it"><b>교사 직무연수</b><span>생성형 AI 활용, 바이브코딩, AI 동화책 등 학교·교육청·도서관 방문형 교사연수</span></div>
+    <div class="grid">
+      <div class="ph">
+        <img src="./assets/img/blog/blog-music-class.jpg" alt="학교로 찾아가는 AI 음악교실" width="900" height="509">
+        <div class="tags"><span>초등 · 중등 · 고등</span><span>전국 출강</span><span>학교 · 교육청 · 도서관</span></div>
       </div>
-      <div class="sbadges">
-        <span>초등 · 중등 · 고등</span><span>전국 출강</span><span>학교 · 교육청 · 도서관</span>
+      <div>
+        <div class="eyebrow">School Education</div>
+        <h2>학교로 찾아가는 AI·코딩 교육,<br>코아랩의 중심입니다</h2>
+        <p class="lead2">초·중·고 학교 현장에서 학생들이 직접 만들고 체험하는 수업을 운영합니다. 전국의 학교와 기관을 찾아가고, 파주시 지역연계 사업과 진로체험 체험처로도 함께하고 있습니다.</p>
+        <div class="plist">
+          <div class="prow"><div class="no">01</div><b>찾아가는 학교교육</b><span>AI 동화책 · AI 음악교실 · 드론 · 3D펜 등 학교로 직접 찾아가는 체험형 수업</span><a href="http://storybooks.coalab.co.kr/">코아랩 스토리북 보기 →</a></div>
+          <div class="prow"><div class="no">02</div><b>AI·코딩 진로체험</b><span>꿈길 체험처 · 고등학교 AI 진로체험 · 학교로 찾아가는 AI·코딩 진로체험</span></div>
+          <div class="prow"><div class="no">03</div><b>파주시 학교 지역연계</b><span>파주시 초·중·고 대상 AI 창작·코딩·데이터 프로그램, 진로체험센터·미래교육 기관 MOU</span></div>
+          <div class="prow"><div class="no">04</div><b>디지털새싹 · AI 동아리</b><span>블록코딩·데이터분석 실습 중심 디지털새싹교육과 학교 AI 동아리 운영</span></div>
+          <div class="prow"><div class="no">05</div><b>발명·메이커 수업</b><span>중학생 발명대회 지도 등 직접 만들며 배우는 메이커 프로그램</span></div>
+          <div class="prow"><div class="no">06</div><b>교사 직무연수</b><span>생성형 AI 활용, 바이브코딩, AI 동화책 등 학교·교육청·도서관 방문형 교사연수</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -192,132 +293,58 @@
     <h2>코아랩이 지키는 네 가지 원칙</h2>
     <p class="sub">수업을 설계할 때마다 기준이 되는 원칙입니다.</p>
     <div class="values">
-      <div class="card">
-        <div class="ico">🛠️</div>
-        <div class="en">HANDS-ON</div>
-        <h3>실무 중심의 배움</h3>
-        <p>이론보다 실습에 시간을 씁니다. 수업이 끝난 다음 날 바로 업무에 쓸 수 있는 결과물을 목표로 합니다.</p>
-      </div>
-      <div class="card">
-        <div class="ico">🚌</div>
-        <div class="en">ON-SITE</div>
-        <h3>찾아가는 현장 교육</h3>
-        <p>파주를 거점으로 전국의 기업, 대학, 학교, 도서관으로 직접 찾아갑니다. 현장의 눈높이에 맞춰 과정을 조정합니다.</p>
-      </div>
-      <div class="card">
-        <div class="ico">📘</div>
-        <div class="en">OWN CONTENT</div>
-        <h3>직접 만든 콘텐츠</h3>
-        <p>교재 출판, 실습 자료, 매일 업데이트되는 AI 뉴스까지 코아랩이 직접 기획하고 운영합니다.</p>
-      </div>
-      <div class="card">
-        <div class="ico">🤝</div>
-        <div class="en">FOR EVERYONE</div>
-        <h3>쉽게, 그리고 끝까지</h3>
-        <p>"전혀 몰랐는데 해볼 수 있겠다"는 말이 나오는 수업을 지향합니다. 초등학생부터 성인, 교사, 실무자까지 수준에 맞춰 설계합니다.</p>
-      </div>
+      <div class="v"><div class="no">01</div><div class="en">HANDS-ON</div><h3>실무 중심의 배움</h3><p>이론보다 실습에 시간을 씁니다. 수업이 끝난 다음 날 바로 업무에 쓸 수 있는 결과물을 목표로 합니다.</p></div>
+      <div class="v"><div class="no">02</div><div class="en">ON-SITE</div><h3>찾아가는 현장 교육</h3><p>파주를 거점으로 전국의 기업, 대학, 학교, 도서관으로 직접 찾아갑니다. 현장의 눈높이에 맞춰 과정을 조정합니다.</p></div>
+      <div class="v"><div class="no">03</div><div class="en">OWN CONTENT</div><h3>직접 만든 콘텐츠</h3><p>교재 출판, 실습 자료, 매일 업데이트되는 AI 뉴스까지 코아랩이 직접 기획하고 운영합니다.</p></div>
+      <div class="v"><div class="no">04</div><div class="en">FOR EVERYONE</div><h3>쉽게, 그리고 끝까지</h3><p>"전혀 몰랐는데 해볼 수 있겠다"는 말이 나오는 수업을 지향합니다. 초등학생부터 성인, 교사, 실무자까지 수준에 맞춰 설계합니다.</p></div>
     </div>
   </div>
 </section>
 
-<!-- THREE ARMS -->
-<section style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+<!-- THREE AXES -->
+<section class="axes">
   <div class="wrap">
     <div class="eyebrow">What We Do</div>
     <h2>코아랩의 세 가지 축</h2>
     <p class="sub">교육, 미디어, 출판이 서로를 받쳐주는 구조로 운영합니다.</p>
-    <div class="arms">
-      <div class="card">
-        <h3>🎓 코아랩 평생교육원</h3>
-        <p>기업 AX(AI 전환) 교육, 창업교육, 대학·학교·성인 대상 AI·코딩 교육과 교사 직무연수, 학교로 찾아가는 진로체험을 운영합니다.</p>
-        <a href="index.html#services">교육 과정 보기 →</a>
-      </div>
-      <div class="card">
-        <h3>📰 COALAB AI 뉴스</h3>
-        <p>국내외 AI 트렌드를 매일 아침 큐레이팅해 전달하는 AI 뉴스 미디어입니다.</p>
-        <a href="https://ai-news.coalab.co.kr">AI 뉴스 보기 →</a>
-      </div>
-      <div class="card">
-        <h3>📚 코아랩 출판사</h3>
-        <p>수업 현장에서 검증한 내용을 교재로 펴냅니다. 「GPT를 활용한 SQL 최적화방안」 외 교재를 준비하고 있습니다.</p>
-        <a href="https://open.kakao.com/o/sZhJVf7">출판·교재 문의 →</a>
-      </div>
+    <div class="axesGrid">
+      <div class="axis"><div class="ic">🎓</div><h3>코아랩 평생교육원</h3><p>학교·기업·대학·지역주민 대상 AI·코딩 교육과 교사 직무연수, 학교로 찾아가는 진로체험을 운영합니다.</p><a href="index.html#services">교육 과정 보기 →</a></div>
+      <div class="axis"><div class="ic">📰</div><h3>COALAB AI 뉴스</h3><p>국내외 AI 트렌드를 매일 아침 큐레이팅해 전달하는 AI 뉴스 미디어입니다.</p><a href="https://ai-news.coalab.co.kr">AI 뉴스 보기 →</a></div>
+      <div class="axis"><div class="ic">📚</div><h3>코아랩 출판사</h3><p>수업 현장에서 검증한 내용을 교재로 펴냅니다. 「GPT를 활용한 SQL 최적화방안」 외 교재를 준비하고 있습니다.</p><a href="https://open.kakao.com/o/sZhJVf7">출판·교재 문의 →</a></div>
     </div>
   </div>
 </section>
 
-<!-- AUDIENCES -->
+<!-- OTHER PROGRAMS -->
 <section>
   <div class="wrap">
     <div class="eyebrow">Our Programs</div>
     <h2>학교 밖의 교육 분야</h2>
     <p class="sub">기업, 창업, 대학, 지역주민, 성인까지 대상에 맞춰 설계합니다.</p>
-    <div class="arms">
-      <div class="card">
-        <h3>🏢 기업 AX · 창업교육</h3>
-        <p>기업 AX(AI 전환) 강의와 임직원 실무 교육, 예비·초기 창업자를 위한 AI 활용 창업교육을 진행합니다.</p>
-        <a href="index.html#services">기업 교육 문의 →</a>
-      </div>
-      <div class="card">
-        <h3>🎓 대학 · 전문교육</h3>
-        <p>대학 정규·특강, 내일배움카드 연계 강의, 폴리텍·대학 실무 과정을 운영합니다.</p>
-        <a href="index.html#services">강의 문의 →</a>
-      </div>
-      <div class="card">
-        <h3>🏘️ 지역교육 · 지역주민교육</h3>
-        <p>파주시 시민제안 우수프로그램, 도서관·평생교육축제 등 지역주민을 위한 AI 교육을 운영합니다. <b>평생교육 바우처 연계 과정 진행중</b>이에요.</p>
-        <a href="index.html#services">지역교육 문의 →</a>
-      </div>
-      <div class="card">
-        <h3>📚 평생교육원 · 성인</h3>
-        <p>성인 대상 AI 리터러시와 ChatGPT 활용, 디지털 전환 실무 과정을 누구나 쉽게 시작할 수 있게 진행합니다.</p>
-        <a href="index.html#services">교육 과정 보기 →</a>
-      </div>
+    <div class="pcards">
+      <div class="pc"><img src="./assets/img/blog/blog-amazon-intern.jpg" alt="기업 인턴 교육 현장" width="900" height="506" loading="lazy"><div class="bd"><span class="badge">기업</span><h3>기업 AX · 창업교육</h3><p>기업 AX(AI 전환) 강의와 임직원 실무 교육, 예비·초기 창업자를 위한 AI 활용 창업교육을 진행합니다.</p><a href="index.html#services">기업 교육 문의 →</a></div></div>
+      <div class="pc"><img src="./assets/img/blog/blog-excel-sql.jpg" alt="엑셀·SQL 데이터 교육 현장" width="900" height="500" loading="lazy"><div class="bd"><span class="badge">대학</span><h3>대학 · 전문교육</h3><p>대학 정규·특강, 내일배움카드 연계 강의, 폴리텍·대학 실무 과정을 운영합니다.</p><a href="index.html#services">강의 문의 →</a></div></div>
+      <div class="pc"><img src="./assets/img/blog/blog-citizen-program.jpg" alt="지역주민 대상 AI 교육 현장" width="900" height="617" loading="lazy"><div class="bd"><span class="badge">지역 · 바우처 진행중</span><h3>지역교육 · 지역주민교육</h3><p>파주시 시민제안 우수프로그램, 도서관·평생교육축제 등 지역주민을 위한 AI 교육을 운영합니다. 평생교육 바우처 연계 과정이 진행중입니다.</p><a href="index.html#services">지역교육 문의 →</a></div></div>
+      <div class="pc"><img src="./assets/img/blog/blog-ai.jpg" alt="성인 대상 AI 리터러시 교육" width="1485" height="1059" loading="lazy"><div class="bd"><span class="badge">성인</span><h3>평생교육원 · 성인</h3><p>성인 대상 AI 리터러시와 ChatGPT 활용, 디지털 전환 실무 과정을 누구나 쉽게 시작할 수 있게 진행합니다.</p><a href="index.html#services">교육 과정 보기 →</a></div></div>
     </div>
-    </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<section>
-  <div class="wrap">
-    <div class="eyebrow">By the Numbers</div>
-    <h2>숫자로 보는 코아랩</h2>
-    <p class="sub">&nbsp;</p>
-    <div class="stats" style="margin-top:-24px">
-      <div class="card"><div class="n">100+</div><div class="l">누적 강의·교육 프로젝트</div></div>
-      <div class="card"><div class="n">20+</div><div class="l">함께하는 강사진<br>(SNS 인플루언서 포함)</div></div>
-      <div class="card"><div class="n">100%</div><div class="l">교육 전반 만족도<br>(4~5점 응답)</div></div>
-      <div class="card"><div class="n">91.7%</div><div class="l">"다시 참여하고 싶다" 응답</div></div>
-    </div>
-    <p class="note">※ 만족도는 2026년 생성형 AI 교육 1·2차 참여자 설문(응답 26명/전체 39명) 기준입니다.</p>
   </div>
 </section>
 
 <!-- JOURNEY -->
-<section style="padding-top:0">
+<section class="journey">
   <div class="wrap">
     <div class="eyebrow">Our Journey</div>
     <h2>코아랩의 걸어온 길</h2>
-    <div class="timeline">
-      <div class="tl">
-        <div class="y">2026</div>
-        <h3>교육·미디어·출판의 세 축으로 확장</h3>
-        <p>20명 이상의 강사진, 누적 100건 이상의 강의·교육 프로젝트 · 파주시 시민제안 우수프로그램(생성형 AI 심화과정) 운영 · 파주시진로체험센터, 파주시 미래교육 관련 기관과 업무협약(MOU) · 디지털새싹교육 운영 · 대구가톨릭대 AI 부트캠프 예정(10월~)</p>
-      </div>
-      <div class="tl">
-        <div class="y">2022</div>
-        <h3>코아랩 창업 · 교육 한 축에서 출발</h3>
-        <p>파주에서 AI·코딩 교육 사업을 시작했습니다. 이후 평생교육원, AI 뉴스, 출판사로 영역을 넓히며 팀과 강사진을 키워 왔습니다.</p>
-      </div>
+    <p class="sub">한 가지 교육에서 출발해 교육·미디어·출판으로 영역을 넓혀 왔습니다.</p>
+    <div>
+      <div class="tl"><div class="y">2026</div><div><h3>교육·미디어·출판의 세 축으로 확장</h3><p>20명 이상의 강사진, 누적 100건 이상의 강의·교육 프로젝트 · 파주시 시민제안 우수프로그램(생성형 AI 심화과정) 운영 · 파주시진로체험센터, 파주시 미래교육 관련 기관과 업무협약(MOU) · 디지털새싹교육 운영 · 대구가톨릭대 AI 부트캠프 예정(10월~)</p></div></div>
+      <div class="tl"><div class="y">2022</div><div><h3>코아랩 창업 · 교육 한 축에서 출발</h3><p>파주에서 AI·코딩 교육 사업을 시작했습니다. 이후 평생교육원, AI 뉴스, 출판사로 영역을 넓히며 팀과 강사진을 키워 왔습니다.</p></div></div>
     </div>
-
-    <h3 style="margin-top:44px;font-size:18px">함께한 현장</h3>
     <div class="chips">
-      <span class="chip">기업 AX(AI 전환) 강의</span>
-      <span class="chip">창업교육</span>
-      <span class="chip">지역주민교육 · 평생교육 바우처</span>
-      <span class="chip">SNS 인플루언서 강사 참여</span>
+      <span class="chip fill">기업 AX(AI 전환) 강의</span>
+      <span class="chip fill">창업교육</span>
+      <span class="chip fill">지역주민교육 · 평생교육 바우처</span>
+      <span class="chip fill">SNS 인플루언서 강사 참여</span>
       <span class="chip">아마존 인턴교육</span>
       <span class="chip">대학 정규·특강 (인천재능대 등)</span>
       <span class="chip">폴리텍대학·청주대 실무 과정</span>
@@ -331,16 +358,31 @@
   </div>
 </section>
 
-<!-- CTA -->
-<section style="padding-top:0">
+<!-- GALLERY -->
+<section>
   <div class="wrap">
-    <div class="cta">
-      <h2>우리 기관에 맞는 AI 교육이 궁금하신가요?</h2>
-      <p>대상과 목적을 알려주시면 맞춤 커리큘럼을 제안드립니다.</p>
-      <div class="btns">
-        <a class="btn" href="https://open.kakao.com/o/sZhJVf7">💬 카카오톡으로 문의</a>
-        <a class="btn o" href="index.html#services">교육 과정 둘러보기</a>
-      </div>
+    <div class="eyebrow">On Site</div>
+    <h2>코아랩의 교육 현장</h2>
+    <p class="sub">학교, 기관, 지역 곳곳에서 진행한 수업 현장입니다.</p>
+    <div class="gal">
+      <figure><img src="./assets/img/blog/blog-3dpen-class.jpg" alt="3D펜 진로체험 수업" loading="lazy"><figcaption>진로체험 · 3D펜 수업</figcaption></figure>
+      <figure><img src="./assets/img/blog/blog-ai-club.jpg" alt="AI 동아리 활동" loading="lazy"><figcaption>AI 동아리</figcaption></figure>
+      <figure><img src="./assets/img/blog/blog-teacher-training.jpg" alt="교사 직무연수" loading="lazy"><figcaption>교사 직무연수</figcaption></figure>
+      <figure><img src="./assets/img/blog/blog-career-ai.jpg" alt="고등학교 AI 진로체험" loading="lazy"><figcaption>고등학교 AI 진로체험</figcaption></figure>
+      <figure><img src="./assets/img/blog/blog-edison-contest.jpg" alt="중학생 발명대회" loading="lazy"><figcaption>중학생 발명대회</figcaption></figure>
+      <figure><img src="./assets/img/blog/blog-school-class.jpg" alt="찾아가는 학교교육" loading="lazy"><figcaption>찾아가는 학교교육</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap">
+    <h2>우리 기관에 맞는 AI 교육이 궁금하신가요?</h2>
+    <p>대상과 목적을 알려주시면 맞춤 커리큘럼을 제안드립니다.</p>
+    <div class="btns">
+      <a class="btn k" href="https://open.kakao.com/o/sZhJVf7">💬 카카오톡으로 문의</a>
+      <a class="btn o" href="index.html#services">교육 과정 둘러보기</a>
     </div>
   </div>
 </section>
