@@ -20,18 +20,18 @@
   body{font-family:'Pretendard','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;word-break:keep-all}
   a{color:inherit;text-decoration:none}
   .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
-  .topbar{background:#fff;border-bottom:1px solid var(--line);font-size:13px;color:#3b4047}
-  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:42px}
+  .topbar{background:var(--bg);border-bottom:1px solid var(--line);font-size:13px;color:var(--accent)}
+  .topbar .wrap{display:flex;justify-content:flex-end;align-items:center;gap:6px;height:42px}
   .soc{display:flex;align-items:center;gap:14px}
   .soc .brand{font-weight:800;letter-spacing:.06em;font-size:15px;color:var(--accent);margin-right:6px}
-  .soc a.ic{display:inline-flex;width:22px;height:22px;color:var(--ink);transition:color .15s,transform .15s}
-  .soc a.ic:hover{color:var(--accent);transform:translateY(-1px)}
+  .soc a.ic{display:inline-flex;width:22px;height:22px;color:var(--accent);transition:color .15s,transform .15s}
+  .soc a.ic:hover{color:#1f4036;transform:translateY(-1px)}
   .soc a.ic svg{width:22px;height:22px}
   .util{display:flex;align-items:center}
   .util a{display:inline-flex;align-items:center;gap:6px;padding:0 14px;position:relative}
-  .util a+a::before{content:"";position:absolute;left:0;top:50%;height:11px;margin-top:-5.5px;border-left:1px solid #d6d1c7}
+  .util a::before{content:"";position:absolute;left:0;top:50%;height:11px;margin-top:-5.5px;border-left:1px solid #d6d1c7}
   .util a:last-child{padding-right:0}
-  .util a:hover{color:var(--accent)}
+  .util a:hover{color:#1f4036}
   .util svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
   header.nav{position:sticky;top:0;background:rgba(251,249,245,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10}
   .nav .navrow{display:flex;align-items:center;justify-content:space-between;height:60px}
@@ -96,7 +96,6 @@
   @media(max-width:720px){
     .util a span{display:none}
     .util a{padding:0 10px}
-    .soc .brand{display:none}
     .school{padding:36px 22px}
     .vm{grid-template-columns:1fr}
     .nav ul{gap:12px;font-size:13px}
@@ -110,7 +109,6 @@
   <div class="topbar">
     <div class="wrap">
       <div class="soc">
-        <span class="brand">COALAB</span>
         <a class="ic" href="https://www.instagram.com/coalab_lsh/" target="_blank" rel="noopener" aria-label="인스타그램" title="인스타그램"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg></a>
         <a class="ic" href="https://www.youtube.com/@%EC%98%A4%EB%8A%98%EA%B3%B5%EB%B6%80-u3k" target="_blank" rel="noopener" aria-label="유튜브" title="유튜브"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M21.6 7.2a2.6 2.6 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.200 0-7.800.4A2.600 2.600 0 0 0 2.400 7.200C2 8.800 2 12 2 12s0 3.200.4 4.800a2.600 2.600 0 0 0 1.800 1.800C5.800 19 12 19 12 19s6.200 0 7.800-.4a2.600 2.600 0 0 0 1.800-1.800c.4-1.600.4-4.800.4-4.800s0-3.200-.4-4.800zM10 15V9l5.200 3z"/></svg></a>
         <a class="ic" href="https://blog.naver.com/valuablethings" target="_blank" rel="noopener" aria-label="블로그" title="네이버 블로그"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.5c-5.500 0-9.500 3.400-9.500 8 0 2.700 1.400 5 3.700 6.400L5.400 21l4.300-2.500c.8.200 1.500.2 2.300.2 5.500 0 9.500-3.400 9.500-8s-4-8.200-9.500-8.200zM8.200 12.700V8.200h1.600c1 0 1.600.5 1.600 1.200 0 .5-.3.9-.7 1 .6.2.9.6.9 1.200 0 .8-.7 1.200-1.700 1.200H8.200zm4.900.1V8.200h1v4.500zm2.100 0V8.200h1v4.500z" opacity=".92"/></svg></a>
