@@ -439,5 +439,28 @@
         });
     </script>
 
+    <script>
+    /* 네이버 블로그 새 글 자동 반영: assets/data/blog.json (GitHub Actions가 주기적으로 갱신) */
+    (function () {
+        var grid = document.querySelector('.blog-preview-grid');
+        if (!grid || !window.fetch) return;
+        fetch('./assets/data/blog.json?v=' + Date.now()).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+            if (!d || !d.posts) return;
+            var have = {};
+            Array.prototype.forEach.call(grid.querySelectorAll('a.blog-post-card'), function (a) { var m = (a.getAttribute('href') || '').match(/(\d{9,})/); if (m) have[m[1]] = 1; });
+            var fresh = d.posts.filter(function (p) { return !have[p.id]; }).slice(0, 4), first = grid.firstChild;
+            fresh.forEach(function (p) {
+                var a = document.createElement('a'); a.className = 'blog-post-card'; a.href = p.url; a.target = '_blank'; a.rel = 'noopener';
+                var im = document.createElement('div'); im.className = 'bp-img';
+                var src = p.image || p.remote;
+                if (src) { var i = document.createElement('img'); i.src = src; i.alt = p.title; i.loading = 'lazy'; i.referrerPolicy = 'no-referrer'; im.appendChild(i); }
+                var b = document.createElement('div'); b.className = 'bp-body';
+                var h = document.createElement('h4'); h.textContent = p.title; var pp = document.createElement('p'); pp.textContent = p.desc || '';
+                b.appendChild(h); b.appendChild(pp); a.appendChild(im); a.appendChild(b);
+                grid.insertBefore(a, first);
+            });
+        }).catch(function () { /* 실패하면 기존 목록 그대로 */ });
+    })();
+    </script>
 </body>
 </html>
