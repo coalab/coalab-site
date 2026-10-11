@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI 동화책 만들기 (초등) | COALAB</title>
+    <meta name="description" content="초등학생이 AI와 함께 나만의 동화책 시나리오를 만드는 활동지. 주인공·장소·사건을 고르면 AI에게 물어볼 질문이 만들어지고, 8장면 시나리오 칸에 정리해 인쇄할 수 있어요. COALAB 코아랩평생교육원">
+    <meta name="theme-color" content="#FBF9F5">
+    <link rel="canonical" href="https://coalab.co.kr/ai-storybook.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="COALAB">
+    <meta property="og:title" content="AI 동화책 만들기 (초등) | COALAB">
+    <meta property="og:description" content="AI와 함께 나만의 동화책 시나리오 만들기 — COALAB 코아랩평생교육원">
+    <meta property="og:url" content="https://coalab.co.kr/ai-storybook.html">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css?v=20260815b" />
+    <style>
+        .sb { max-width: 880px; margin: 0 auto; padding: 40px 20px 72px; color: var(--ink); }
+        .sb h1 { font-size: 30px; margin: 6px 0 10px; line-height: 1.3; }
+        .sb h2 { font-size: 20px; margin: 0 0 14px; }
+        .sb .eyebrow { color: var(--brand-ink); font-weight: 700; font-size: 13px; letter-spacing: .04em; }
+        .sb .lead { color: var(--ink-2); line-height: 1.7; margin: 0 0 22px; }
+        .sb .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 24px; margin: 0 0 20px; box-shadow: var(--shadow-sm); }
+        .sb .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .sb label { display: block; font-weight: 700; font-size: 14px; margin: 0 0 6px; }
+        .sb .hint { font-weight: 400; color: var(--ink-3); font-size: 13px; }
+        .sb input[type=text], .sb select, .sb textarea { width: 100%; box-sizing: border-box; font: inherit; font-size: 16px; padding: 11px 12px; border: 1px solid var(--line); border-radius: 12px; background: #fff; color: var(--ink); }
+        .sb textarea { min-height: 96px; line-height: 1.6; resize: vertical; }
+        .sb input:focus, .sb select:focus, .sb textarea:focus { outline: 2px solid var(--brand); outline-offset: 1px; }
+        .sb .btn { display: inline-block; font: inherit; font-weight: 700; border: 0; cursor: pointer; background: var(--brand); color: #fff; padding: 12px 22px; border-radius: var(--radius-pill); text-decoration: none; }
+        .sb .btn.ghost { background: var(--brand-tint); color: var(--brand-ink); }
+        .sb .row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; align-items: center; }
+        .sb pre { white-space: pre-wrap; word-break: keep-all; background: var(--bg-soft); border: 1px solid var(--line-soft); border-radius: 12px; padding: 16px; line-height: 1.7; font: inherit; font-size: 15px; margin: 0; }
+        .sb .note { color: var(--ink-3); font-size: 13px; line-height: 1.6; margin: 10px 0 0; }
+        .sb .safe { background: var(--brand-tint); border-radius: 12px; padding: 14px 16px; color: var(--brand-ink); line-height: 1.6; font-size: 14px; }
+        .sb .scene { border-top: 1px dashed var(--line); padding-top: 16px; margin-top: 16px; }
+        .sb .scene:first-of-type { border-top: 0; margin-top: 0; padding-top: 0; }
+        .sb .scene .tag { display: inline-block; font-size: 12px; font-weight: 700; background: var(--brand-tint); color: var(--brand-ink); border-radius: 999px; padding: 3px 10px; margin-left: 6px; }
+        .sb .scene .q { color: var(--ink-3); font-size: 13px; margin: 0 0 6px; }
+        .sb .status { color: var(--brand-ink); font-size: 13px; min-height: 18px; }
+        .sb .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 8px; }
+        .sb .chip { font: inherit; font-size: 13px; cursor: pointer; border: 1px solid var(--line); background: var(--brand-tint); color: var(--brand-ink); border-radius: 999px; padding: 5px 11px; }
+        .sb details { margin: 0 0 14px; } .sb summary { cursor: pointer; font-weight: 700; color: var(--brand-ink); }
+        .sb .ex { background: var(--bg-soft); border-radius: 12px; padding: 12px 16px; margin-top: 10px; line-height: 1.7; font-size: 14px; }
+        .sb .ex ol { margin: 6px 0 0; padding-left: 20px; }
+        .sb .tabs { display: flex; gap: 6px; margin: 20px 0 16px; flex-wrap: wrap; }
+        .sb .tab { flex: 1; min-width: 120px; font: inherit; font-weight: 700; cursor: pointer; border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); border-radius: 14px; padding: 11px 8px; }
+        .sb .tab[aria-selected=true] { background: var(--brand); border-color: var(--brand); color: #fff; }
+        .sb .step[hidden] { display: none; }
+        .sb .pal { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin: 10px 0; }
+        .sb .sw { width: 30px; height: 30px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px var(--line); cursor: pointer; padding: 0; }
+        .sb .sw[aria-pressed=true] { box-shadow: 0 0 0 3px var(--brand); }
+        .sb canvas { width: 100%; max-width: 640px; aspect-ratio: 3/2; background: #fff; border: 2px solid var(--line); border-radius: 14px; touch-action: none; display: block; cursor: crosshair; }
+        .sb .scnav { display: flex; gap: 6px; flex-wrap: wrap; margin: 0 0 12px; }
+        .sb .scnav button { font: inherit; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); cursor: pointer; font-weight: 700; }
+        .sb .scnav button[aria-pressed=true] { background: var(--brand); color: #fff; border-color: var(--brand); }
+        .sb .scnav button.has { border-color: var(--brand); color: var(--brand-ink); }
+        .sb .scnav button[aria-pressed=true].has { color: #fff; }
+        .sb .bkwrap { max-width: 640px; margin: 0 auto; }
+        .sb .bkpage { display: none; aspect-ratio: 3/4; background: #fffdf8; border: 2px solid var(--line); border-radius: 18px; padding: 22px; box-sizing: border-box; flex-direction: column; gap: 14px; box-shadow: var(--shadow-md); }
+        .sb .bkpage.on { display: flex; }
+        .sb .bkpage img { width: 100%; aspect-ratio: 3/2; object-fit: contain; background: #fff; border-radius: 10px; border: 1px solid var(--line-soft); }
+        .sb .bkpage .noimg { width: 100%; aspect-ratio: 3/2; display: flex; align-items: center; justify-content: center; border-radius: 10px; border: 1px dashed var(--line); color: var(--ink-3); font-size: 14px; }
+        .sb .bkpage .tx { font-size: 20px; line-height: 1.8; flex: 1; overflow: auto; word-break: keep-all; white-space: pre-wrap; }
+        .sb .bkpage.cover { justify-content: center; align-items: center; text-align: center; background: var(--brand-tint); }
+        .sb .bkpage.cover h3 { font-size: 30px; margin: 0; line-height: 1.4; }
+        .sb .bkpage .pg { text-align: center; color: var(--ink-3); font-size: 13px; }
+        @media print { .sb .step { display: none !important; } .sb #step4 { display: block !important; } .sb .tabs { display: none !important; }
+            .sb .bkpage { display: flex !important; page-break-after: always; box-shadow: none; aspect-ratio: auto; min-height: 90vh; } }
+        @media (max-width: 640px) { .sb .grid { grid-template-columns: 1fr; } .sb h1 { font-size: 25px; } }
+        @media print {
+            header, footer, .sb .noprint, .sb .btn { display: none !important; }
+            .sb .card { box-shadow: none; border: 0; padding: 0; }
+            .sb textarea { border: 1px solid #999; min-height: 90px; }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>
+            <a href="index.html">
+                <img src="./assets/img/logo.png?v=20260815b" alt="COALAB 로고" class="logo-img">
+            </a>
+        </h1>
+        <nav>
+            <a href="index.html">홈</a>
+            <a href="index.html#services">교육 과정</a>
+            <a href="cos-pro.html">COS Pro 스터디</a>
+            <a href="records.html">교육실적</a>
+            <a href="https://open.kakao.com/o/sZhJVf7" target="_blank" rel="noopener" class="nav-cta">강의 문의</a>
+        </nav>
+    </header>
+
+    <main class="sb">
+        <div class="eyebrow">COALAB 코아랩평생교육원 · 초등 AI 활동지</div>
+        <h1>AI와 함께 만드는 나만의 동화책 📖</h1>
+        <p class="lead">주인공과 이야기를 내가 정하면, AI가 도와줄 질문을 만들어 줘요.
+            AI가 알려 준 이야기를 그대로 쓰지 않고, <b>내 생각으로 고쳐서</b> 8장면 시나리오를 완성해 보세요.</p>
+
+        <div class="safe noprint">🔒 <b>꼭 지켜요!</b> 내 진짜 이름, 학교, 사는 곳, 전화번호는 AI에게 쓰지 않아요. 이야기 속 이름은 <b>지어낸 이름</b>으로 해요. AI를 쓸 때는 선생님이나 보호자와 함께해요.</div>
+
+        <div class="tabs noprint" role="tablist" id="tabs">
+            <button class="tab" role="tab" data-s="1" type="button">① 재료·AI 질문</button>
+            <button class="tab" role="tab" data-s="2" type="button">② 시나리오 쓰기</button>
+            <button class="tab" role="tab" data-s="3" type="button">③ 그림 그리기</button>
+            <button class="tab" role="tab" data-s="4" type="button">④ 책으로 보기</button>
+        </div>
+
+        <div class="step" id="step1">
+        <section class="card noprint">
+            <h2>이야기 재료 고르기</h2>
+            <div class="grid">
+                <div><label for="who">주인공 종류</label>
+                    <select id="who">
+                        <option>아기 토끼</option><option>작은 곰</option><option>꼬마 로봇</option><option>용감한 고양이</option>
+                        <option>숲속 다람쥐</option><option>아기 공룡</option><option>마법사 소녀</option><option>우주 탐험가</option>
+                    </select></div>
+                <div><label for="name">주인공 이름 <span class="hint">(지어낸 이름)</span></label>
+                    <input type="text" id="name" maxlength="12" placeholder="예) 보리" autocomplete="off"></div>
+                <div><label for="place">이야기가 일어나는 곳</label>
+                    <select id="place">
+                        <option>깊은 숲속</option><option>바닷속 마을</option><option>구름 위 나라</option><option>우리 동네 놀이터</option>
+                        <option>달나라</option><option>장난감 가게</option><option>눈 내리는 산</option><option>비밀 도서관</option>
+                    </select></div>
+                <div><label for="trouble">생긴 문제</label>
+                    <select id="trouble">
+                        <option>소중한 물건을 잃어버렸어요</option><option>친구와 다퉈서 사이가 멀어졌어요</option>
+                        <option>길을 잃어버렸어요</option><option>무서워서 해 보지 못한 일이 있어요</option>
+                        <option>새로 온 친구가 외로워 보여요</option><option>마을에 큰 비밀이 생겼어요</option>
+                    </select></div>
+                <div><label for="lesson">이야기가 알려 주는 마음</label>
+                    <select id="lesson">
+                        <option>용기</option><option>친구를 아끼는 마음</option><option>정직</option><option>나누는 기쁨</option>
+                        <option>포기하지 않는 마음</option><option>서로 다름을 존중하기</option><option>환경을 지키는 마음</option>
+                    </select></div>
+                <div><label for="grade">읽을 친구</label>
+                    <select id="grade">
+                        <option value="low">1~2학년 (짧고 쉬운 말)</option>
+                        <option value="mid" selected>3~4학년</option>
+                        <option value="high">5~6학년 (조금 더 긴 이야기)</option>
+                    </select></div>
+            </div>
+            <div class="row"><button class="btn" id="make" type="button">AI에게 물어볼 질문 만들기</button></div>
+        </section>
+
+        <section class="card noprint" id="promptBox" hidden>
+            <h2>AI에게 물어보기</h2>
+            <pre id="promptText"></pre>
+            <div class="row">
+                <button class="btn" id="copy" type="button">질문 복사하기</button>
+                <a class="btn ghost" href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT 열기</a>
+                <a class="btn ghost" href="https://claude.ai/" target="_blank" rel="noopener">Claude 열기</a>
+                <a class="btn ghost" href="https://gemini.google.com/" target="_blank" rel="noopener">Gemini 열기</a>
+                <span class="status" id="copyStatus" role="status"></span>
+            </div>
+            <p class="note">복사한 질문을 AI 대화창에 붙여 넣으면 이야기 뼈대가 나와요. 마음에 안 들면 "더 웃기게", "결말을 바꿔 줘"처럼 다시 부탁해 보세요.</p>
+        </section>
+
+        <div class="row noprint" style="justify-content:flex-end;margin:0 0 20px"><button class="btn" type="button" data-go="2">다음: 시나리오 쓰기 →</button></div>
+        </div>
+
+        <div class="step" id="step2" hidden>
+        <section class="card noprint">
+            <h2>시나리오가 어려울 땐? 3가지 방법 💡</h2>
+            <details open><summary>① 이야기 뼈대는 "그런데 → 그래서 → 마침내"</summary>
+                <div class="ex">이야기는 <b>문제가 생기고(그런데) → 해결하려고 애쓰고(그래서) → 해결되는(마침내)</b> 흐름이에요.<br>
+                    예) 아기 토끼 보리가 친구와 놀고 싶었어요. <b>그런데</b> 마음과 달리 화를 내고 말았어요. <b>그래서</b> 먼저 사과 편지를 썼어요. <b>마침내</b> 친구와 다시 웃으며 놀았어요.</div></details>
+            <details><summary>② 완성된 예시 보기 (「보리의 사과 편지」)</summary>
+                <div class="ex"><ol>
+                    <li>숲속 마을에 아기 토끼 보리가 살았어요. 보리의 단짝은 다람쥐 밤이였어요.</li>
+                    <li>둘은 매일 도토리 숲에서 숨바꼭질을 했어요.</li>
+                    <li>어느 날 보리는 지는 게 속상해서 밤이에게 화를 내고 말았어요.</li>
+                    <li>보리는 사과하고 싶었지만 부끄러워서 말이 나오지 않았어요.</li>
+                    <li>다음 날 밤이는 보이지 않았고, 보리는 쓸쓸한 마음으로 혼자 걸었어요.</li>
+                    <li>보리는 용기를 내어 편지를 쓰고 밤이네 집 앞에 놓았어요.</li>
+                    <li>밤이가 편지를 읽고 환하게 웃으며 달려 나왔어요.</li>
+                    <li>보리는 알게 되었어요. 미안한 마음은 말로 꺼낼 때 가장 빨리 풀린다는 것을요.</li></ol></div></details>
+            <details><summary>③ AI가 써 준 이야기를 8장면으로 자동 나누기</summary>
+                <div class="ex">AI가 써 준 글을 아래 칸에 붙여 넣고 버튼을 누르면 장면 칸에 나눠 담아요. 그 뒤에 <b>내 말로 고쳐 쓰는 게 진짜 숙제!</b>
+                    <textarea id="paste" placeholder="여기에 AI가 써 준 이야기를 붙여 넣어요" style="margin-top:8px"></textarea>
+                    <div class="row"><button class="btn ghost" id="split" type="button">장면 칸에 나눠 담기</button><span class="status" id="splitStatus" role="status"></span></div></div></details>
+        </section>
+
+        <section class="card noprint">
+            <h2>내 시나리오 8장면 <span class="hint" style="font-weight:400">(자동 저장돼요)</span></h2>
+            <div id="scenes"></div>
+            <div class="row noprint">
+                <label for="title" style="margin:0">동화책 제목</label>
+                <input type="text" id="title" maxlength="40" placeholder="내 동화책의 제목" style="flex:1;min-width:200px" autocomplete="off">
+            </div>
+            <div class="row noprint">
+                <button class="btn ghost" id="reset" type="button">모두 지우기</button>
+                <span class="status" id="saveStatus" role="status"></span>
+            </div>
+            <p class="note noprint">작성한 내용은 이 컴퓨터의 브라우저에만 저장되고, 사이트로 전송되지 않아요.</p>
+        </section>
+        <div class="row noprint" style="justify-content:space-between;margin:0 0 20px"><button class="btn ghost" type="button" data-go="1">← 이전</button><button class="btn" type="button" data-go="3">다음: 그림 그리기 →</button></div>
+        </div>
+
+        <div class="step" id="step3" hidden>
+        <section class="card noprint">
+            <h2>장면 그림 그리기 🎨</h2>
+            <p class="lead" style="margin:0 0 12px">장면을 고르고 손가락이나 마우스로 그려요. 그림은 안 그려도 괜찮아요. (AI 그림 도구로 만든 그림은 책에 넣지 않고 따로 보관해요)</p>
+            <div class="scnav" id="scnav"></div>
+            <p class="q" id="scText" style="color:var(--ink-2);margin:0 0 8px"></p>
+            <canvas id="cv" width="600" height="400" aria-label="그림 그리는 곳"></canvas>
+            <div class="pal" id="pal"></div>
+            <div class="row">
+                <label for="bsize" style="margin:0">굵기</label><input type="range" id="bsize" min="2" max="28" value="6">
+                <button class="btn ghost" id="eraser" type="button" aria-pressed="false">지우개</button>
+                <button class="btn ghost" id="clearImg" type="button">이 그림 지우기</button>
+                <span class="status" id="imgStatus" role="status"></span>
+            </div>
+        </section>
+        <div class="row noprint" style="justify-content:space-between;margin:0 0 20px"><button class="btn ghost" type="button" data-go="2">← 이전</button><button class="btn" type="button" data-go="4">다음: 책으로 보기 →</button></div>
+        </div>
+
+        <div class="step" id="step4" hidden>
+        <section class="card">
+            <h2 class="noprint">내가 만든 동화책 📚</h2>
+            <div class="row noprint" style="margin:0 0 14px">
+                <label for="title" style="margin:0">제목</label>
+                <input type="text" id="title" maxlength="40" placeholder="동화책 제목" style="flex:1;min-width:180px" autocomplete="off">
+                <label for="author" style="margin:0">글·그림</label>
+                <input type="text" id="author" maxlength="12" placeholder="별명" style="width:130px" autocomplete="off">
+            </div>
+            <div class="bkwrap"><div id="book"></div>
+                <div class="row noprint" style="justify-content:center">
+                    <button class="btn ghost" id="bprev" type="button">◀ 앞 장</button>
+                    <span id="bpg" class="status" style="min-width:60px;text-align:center"></span>
+                    <button class="btn ghost" id="bnext" type="button">뒷 장 ▶</button>
+                </div></div>
+            <div class="row noprint" style="justify-content:center;margin-top:18px">
+                <button class="btn" id="print" type="button">🖨️ 인쇄 / PDF로 저장</button>
+            </div>
+        </section>
+        <div class="row noprint" style="margin:0 0 20px"><button class="btn ghost" type="button" data-go="3">← 이전</button></div>
+        </div>
+
+        <section class="card noprint">
+            <h2>다음엔 이렇게 해 봐요</h2>
+            <p class="lead" style="margin:0">① 장면마다 그림을 그리거나 AI 그림 도구로 만들어 보기 ② 친구와 바꿔 읽고 "좋은 점 1개, 바꾸면 좋을 점 1개" 말해 주기 ③ 가족 앞에서 낭독해 보기</p>
+        </section>
+    </main>
+
+    <footer>
+        <h4>COALAB</h4>
+        <div class="social">
+            <a href="https://ai-news.coalab.co.kr" target="_blank" rel="noopener">📰 AI뉴스</a>
+            &nbsp;·&nbsp;
+            <a href="https://blog.naver.com/valuablethings" target="_blank" rel="noopener">📝 블로그</a>
+            &nbsp;·&nbsp;
+            <a href="https://open.kakao.com/o/sZhJVf7" target="_blank" rel="noopener">💬 문의</a>
+        </div>
+        <p>© 2026 COALAB. All rights reserved.</p>
+    </footer>
+
+    <script>
+    (function () {
+        var KEY = 'coalab-storybook-v1';
+        function $(id) { return document.getElementById(id); }
+        var SCENES = [
+            ['발단', '주인공은 누구이고 어디에 살고 있나요?'],
+            ['발단', '평소에는 어떤 하루를 보내나요?'],
+            ['전개', '어떤 문제가 생겼나요?'],
+            ['전개', '주인공은 어떻게 해결하려고 했나요?'],
+            ['위기', '일이 더 어려워지는 일이 생겼어요. 무엇인가요?'],
+            ['절정', '주인공이 가장 용기를 내는 순간은 언제인가요?'],
+            ['결말', '문제는 어떻게 해결되었나요?'],
+            ['결말', '주인공은 무엇을 배웠나요? 마지막 한 문장은?']
+        ];
+        var STARTERS = [
+            ['옛날 옛적에', '어느 마을에', '… 는 …를 좋아했어요.'],
+            ['매일', '그날도', '… 와 함께 …했어요.'],
+            ['그런데', '어느 날', '갑자기'],
+            ['그래서', '… 는 …해 보기로 했어요.', '먼저'],
+            ['하지만', '그때', '더 큰 문제가 생겼어요.'],
+            ['마음을 먹고', '두 눈을 질끈 감고', '… 는 용기를 냈어요.'],
+            ['마침내', '그러자', '드디어'],
+            ['그 뒤로', '… 는 알게 되었어요.', '그래서 지금도']
+        ];
+        var state = { title: '', author: '', scenes: [], imgs: [] };
+        try { var s = JSON.parse(localStorage.getItem(KEY) || 'null'); if (s && s.scenes) state = s; } catch (e) { /* 저장소 사용 불가 시 메모리에서만 동작 */ }
+        function save() {
+            try { localStorage.setItem(KEY, JSON.stringify(state)); $('saveStatus').textContent = '저장됨'; $('imgStatus').textContent = ''; }
+            catch (e) { $('saveStatus').textContent = '이 브라우저에서는 저장되지 않아요(인쇄는 가능)'; }
+        }
+        function render() {
+            $('title').value = state.title || ''; $('author').value = state.author || '';
+            $('scenes').innerHTML = SCENES.map(function (sc, i) {
+                return '<div class="scene"><label for="sc' + i + '">장면 ' + (i + 1) + '<span class="tag">' + sc[0] + '</span></label>' +
+                    '<p class="q">' + sc[1] + '</p><div class="chips noprint">' + STARTERS[i].map(function (c) { return '<button type="button" class="chip" data-i="' + i + '">' + c + '</button>'; }).join('') + '</div><textarea id="sc' + i + '" data-i="' + i + '"></textarea></div>';
+            }).join('');
+            Array.prototype.forEach.call(document.querySelectorAll('#scenes .chip'), function (b) {
+                b.addEventListener('click', function () {
+                    var i = +b.getAttribute('data-i'), t = $('sc' + i);
+                    t.value = (t.value ? t.value + ' ' : '') + b.textContent; state.scenes[i] = t.value; save(); t.focus();
+                });
+            });
+            Array.prototype.forEach.call(document.querySelectorAll('#scenes textarea'), function (t) {
+                var i = +t.getAttribute('data-i'); t.value = state.scenes[i] || '';
+                t.addEventListener('input', function () { state.scenes[i] = t.value; save(); buildBook(); });
+            });
+        }
+        $('title').addEventListener('input', function () { state.title = $('title').value; save(); buildBook(); });
+        $('author').addEventListener('input', function () { state.author = $('author').value; save(); buildBook(); });
+
+        var LEVEL = {
+            low: '1~2학년이 읽을 수 있게, 한 문장은 짧게(15자 안팎) 쓰고 쉬운 낱말만 써 주세요. 장면마다 2~3문장.',
+            mid: '3~4학년이 읽을 수 있게, 쉬운 낱말로 장면마다 3~4문장을 써 주세요.',
+            high: '5~6학년이 읽을 수 있게, 대화와 감정 표현을 넣어 장면마다 4~5문장을 써 주세요.'
+        };
+        var text = '';
+        $('make').addEventListener('click', function () {
+            var name = $('name').value.trim() || '보리';
+            var who = $('who').value, place = $('place').value, trouble = $('trouble').value, lesson = $('lesson').value;
+            text = '나는 초등학생이고 동화책을 만들고 있어요. 아래 재료로 동화 시나리오를 8장면으로 만들어 주세요.\n\n' +
+                '- 주인공: ' + who + ' "' + name + '"\n' +
+                '- 장소: ' + place + '\n' +
+                '- 생긴 문제: ' + trouble + '\n' +
+                '- 이야기가 알려 주는 마음: ' + lesson + '\n\n' +
+                '규칙:\n' +
+                '1) ' + LEVEL[$('grade').value] + '\n' +
+                '2) 장면 순서는 발단 2장면, 전개 2장면, 위기 1장면, 절정 1장면, 결말 2장면으로 해 주세요.\n' +
+                '3) 무섭거나 폭력적인 내용은 넣지 말고, 따뜻하고 희망적인 이야기로 써 주세요.\n' +
+                '4) 장면마다 "장면 번호 + 소제목"을 붙이고, 마지막에 동화책 제목 후보 3개를 알려 주세요.\n' +
+                '5) 끝나면 내가 이야기를 더 좋게 고칠 수 있도록 생각해 볼 질문 2개를 해 주세요.';
+            $('promptText').textContent = text;
+            $('promptBox').hidden = false;
+            $('promptBox').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        $('copy').addEventListener('click', function () {
+            var st = $('copyStatus');
+            function fb() { var r = document.createRange(); r.selectNodeContents($('promptText')); var sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); st.textContent = '글이 선택됐어요. Ctrl+C로 복사하세요.'; }
+            if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { st.textContent = '복사했어요!'; }, fb); else fb();
+        });
+        $('reset').addEventListener('click', function () {
+            if (confirm('글과 그림을 모두 지울까요?')) { state = { title: '', author: '', scenes: [], imgs: [] }; save(); render(); drawScene(cur); buildBook(); }
+        });
+        $('split').addEventListener('click', function () {
+            var raw = $('paste').value.replace(/\r/g, '').trim(), st = $('splitStatus');
+            if (!raw) { st.textContent = '먼저 글을 붙여 넣어 주세요.'; return; }
+            var marks = /^\s*(?:#{1,4}\s*)?(?:\*\*)?\s*(?:장면\s*)?(\d{1,2})\s*(?:장면)?\s*[.):：\-—]?/;
+            var parts = [], cur = null;
+            raw.split('\n').forEach(function (line) {
+                var m = line.match(marks);
+                if (m && +m[1] >= 1 && +m[1] <= 8 && /(장면|^\s*\d)/.test(line)) { cur = []; parts.push(cur); line = line.replace(marks, '').replace(/\*\*/g, '').trim(); }
+                if (cur && line.trim()) cur.push(line.trim());
+            });
+            parts = parts.map(function (p) { return p.join(' ').replace(/\*\*/g, '').trim(); }).filter(Boolean);
+            if (parts.length < 2) {
+                var sents = raw.replace(/\n+/g, ' ').match(/[^.!?。]+[.!?。]?/g) || [], per = Math.max(1, Math.ceil(sents.length / 8));
+                parts = []; for (var k = 0; k < sents.length; k += per) parts.push(sents.slice(k, k + per).join(' ').trim());
+            }
+            parts = parts.slice(0, 8);
+            for (var i = 0; i < 8; i++) state.scenes[i] = parts[i] || state.scenes[i] || '';
+            save(); render();
+            st.textContent = parts.length + '개 장면으로 나눴어요. 이제 내 말로 고쳐 써 보세요!';
+            $('scenes').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        /* ===== 탭 ===== */
+        var curStep = 1;
+        function go(n) {
+            curStep = n;
+            for (var k = 1; k <= 4; k++) { $('step' + k).hidden = (k !== n); }
+            Array.prototype.forEach.call(document.querySelectorAll('#tabs .tab'), function (b) { b.setAttribute('aria-selected', String(+b.getAttribute('data-s') === n)); });
+            if (n === 3) drawScene(cur);
+            if (n === 4) buildBook();
+            window.scrollTo(0, 0);
+        }
+        Array.prototype.forEach.call(document.querySelectorAll('#tabs .tab'), function (b) { b.addEventListener('click', function () { go(+b.getAttribute('data-s')); }); });
+        Array.prototype.forEach.call(document.querySelectorAll('[data-go]'), function (b) { b.addEventListener('click', function () { go(+b.getAttribute('data-go')); }); });
+
+        /* ===== 그림 ===== */
+        var cv = $('cv'), g = cv.getContext ? cv.getContext('2d') : null, cur = 0, color = '#222222', erasing = false, drawing = false, lx = 0, ly = 0;
+        var COLORS = ['#222222', '#e53935', '#fb8c00', '#fdd835', '#43a047', '#1e88e5', '#8e24aa', '#6d4c41', '#f48fb1'];
+        $('pal').innerHTML = COLORS.map(function (c, i) { return '<button type="button" class="sw" data-c="' + c + '" aria-label="색 ' + (i + 1) + '" aria-pressed="' + (i === 0) + '" style="background:' + c + '"></button>'; }).join('');
+        Array.prototype.forEach.call(document.querySelectorAll('#pal .sw'), function (b) {
+            b.addEventListener('click', function () {
+                color = b.getAttribute('data-c'); erasing = false; $('eraser').setAttribute('aria-pressed', 'false');
+                Array.prototype.forEach.call(document.querySelectorAll('#pal .sw'), function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+            });
+        });
+        $('eraser').addEventListener('click', function () { erasing = !erasing; $('eraser').setAttribute('aria-pressed', String(erasing)); $('eraser').textContent = erasing ? '지우개 켜짐' : '지우개'; });
+        function navBuild() {
+            $('scnav').innerHTML = SCENES.map(function (_, i) { return '<button type="button" data-i="' + i + '" aria-label="장면 ' + (i + 1) + '" aria-pressed="' + (i === cur) + '" class="' + (state.imgs[i] ? 'has' : '') + '">' + (i + 1) + '</button>'; }).join('');
+            Array.prototype.forEach.call(document.querySelectorAll('#scnav button'), function (b) { b.addEventListener('click', function () { cur = +b.getAttribute('data-i'); drawScene(cur); }); });
+        }
+        function drawScene(i) {
+            cur = i; navBuild();
+            $('scText').textContent = '장면 ' + (i + 1) + ' · ' + (state.scenes[i] ? state.scenes[i].slice(0, 80) : SCENES[i][1]);
+            if (!g) return;
+            g.fillStyle = '#fff'; g.fillRect(0, 0, cv.width, cv.height);
+            if (state.imgs[i]) { var im = new Image(); im.onload = function () { g.drawImage(im, 0, 0, cv.width, cv.height); }; im.src = state.imgs[i]; }
+        }
+        function pos(e) { var r = cv.getBoundingClientRect(); return [(e.clientX - r.left) * cv.width / r.width, (e.clientY - r.top) * cv.height / r.height]; }
+        function line(x1, y1, x2, y2) {
+            g.strokeStyle = erasing ? '#ffffff' : color; g.lineWidth = +$('bsize').value * (cv.width / 640) * (erasing ? 2 : 1); g.lineCap = 'round'; g.lineJoin = 'round';
+            g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2, y2); g.stroke();
+        }
+        function saveImg() {
+            try { state.imgs[cur] = cv.toDataURL('image/jpeg', 0.7); localStorage.setItem(KEY, JSON.stringify(state)); $('imgStatus').textContent = '저장됨'; }
+            catch (e) { $('imgStatus').textContent = '이 브라우저에서는 그림이 저장되지 않아요(이 화면에서는 보여요)'; }
+            navBuild();
+        }
+        if (g) {
+            cv.addEventListener('pointerdown', function (e) { drawing = true; var p = pos(e); lx = p[0]; ly = p[1]; line(lx, ly, lx + 0.01, ly); try { cv.setPointerCapture(e.pointerId); } catch (x) { /* 무시 */ } e.preventDefault(); });
+            cv.addEventListener('pointermove', function (e) { if (!drawing) return; var p = pos(e); line(lx, ly, p[0], p[1]); lx = p[0]; ly = p[1]; e.preventDefault(); });
+            function up() { if (drawing) { drawing = false; saveImg(); } }
+            cv.addEventListener('pointerup', up); cv.addEventListener('pointercancel', up); cv.addEventListener('pointerleave', up);
+        }
+        $('clearImg').addEventListener('click', function () { state.imgs[cur] = null; save(); drawScene(cur); });
+
+        /* ===== 책 ===== */
+        var bi = 0;
+        function esc(x) { return String(x).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+        function buildBook() {
+            var pages = ['<div class="bkpage cover"><h3>' + esc(state.title || '제목을 지어 주세요') + '</h3><p>글·그림 ' + esc(state.author || '나') + '</p></div>'];
+            SCENES.forEach(function (_, i) {
+                pages.push('<div class="bkpage">' + (state.imgs[i] ? '<img alt="장면 ' + (i + 1) + ' 그림" src="' + state.imgs[i] + '">' : '<div class="noimg">그림 없음</div>') +
+                    '<div class="tx">' + esc(state.scenes[i] || '(아직 쓰지 않았어요)') + '</div><div class="pg">' + (i + 1) + ' / 8</div></div>');
+            });
+            $('book').innerHTML = pages.join('');
+            showPage(bi);
+        }
+        function showPage(n) {
+            var ps = document.querySelectorAll('#book .bkpage'), len = ps.length;
+            bi = Math.max(0, Math.min(len - 1, n));
+            Array.prototype.forEach.call(ps, function (p, i) { p.className = p.className.replace(/\bon\b/g, '').trim() + (i === bi ? ' on' : ''); });
+            $('bpg').textContent = (bi === 0 ? '표지' : bi + '쪽');
+            $('bprev').disabled = bi === 0; $('bnext').disabled = bi === len - 1;
+        }
+        $('bprev').addEventListener('click', function () { showPage(bi - 1); });
+        $('bnext').addEventListener('click', function () { showPage(bi + 1); });
+        $('print').addEventListener('click', function () { window.print(); });
+        render();
+        go(1);
+    })();
+    </script>
+</body>
+
+</html>
