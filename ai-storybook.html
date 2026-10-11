@@ -422,17 +422,12 @@
             var name = $('name').value.trim() || '보리', who = $('who').value, place = $('place').value, tr = $('trouble').value, ls = $('lesson').value, g = $('grade').value;
             var n = g === 'low' ? 1 : (g === 'mid' ? 2 : 3);
             var rows = T[tr] || T['소중한 물건을 잃어버렸어요'], tl = END[ls] || END['용기'];
-            var variants = ['', '', ''];
-            var starts = [
-                ['{p}에 ' + who + ' {n}{이}(가) 살았어요.'.replace('{이}(가)', '').replace(/^/, ''), '', ''],
-            ];
             var first = place + '에 ' + who + ' ' + name + (hasJong(name) ? '이' : '가') + ' 살았어요.';
             var sc = [];
             sc[0] = pick([first, name + (hasJong(name) ? '은' : '는') + ' 씩씩하고 마음이 따뜻한 아이였어요.', name + '의 친구들은 모두 ' + name + (hasJong(name) ? '을' : '를') + ' 좋아했어요.'], n);
             sc[1] = pick([name + (hasJong(name) ? '은' : '는') + ' 아침마다 "오늘은 어떤 일이 있을까?" 하고 생각했어요.', '그날도 ' + name + (hasJong(name) ? '은' : '는') + ' 기분 좋게 하루를 시작했어요.', place + '의 하늘은 맑고 바람은 포근했어요.'], n);
             for (var i = 0; i < 5; i++) { sc[2 + i] = fill(pick(rows[i], n), name, place); }
             sc[7] = fill(pick(tl, n), name, place);
-            // 마지막 결말: 장면 6(index 6)=해결, 7=배운 점 (rows[4]는 index 6)
             return sc;
         }
         $('draft').addEventListener('click', function () {
