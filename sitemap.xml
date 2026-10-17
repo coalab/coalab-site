@@ -64,5 +64,12 @@
     <priority>0.6</priority>
   </url>
 
+  <url>
+    <loc>https://coalab.co.kr/cos-pro-04.html</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
   <url><loc>https://coalab.co.kr/ai-storybook.html</loc></url>
 </urlset>

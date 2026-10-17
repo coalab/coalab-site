@@ -33,6 +33,15 @@ window.COSPRO_SERIES = {
       minutes: 120,
       count: 8,
       locked: true
+    },
+    {
+      n: 4,
+      file: 'cos-pro-04.html',
+      title: '리스트를 분석하고 규칙을 찾는 시간',
+      topic: '최댓값·최솟값 · 중복 제거 · 평균 비교 · 구간 합 · 회전 · 두 수의 합',
+      minutes: 120,
+      count: 8,
+      locked: false
     }
   ]
 };
