@@ -703,3 +703,16 @@ footer .policy-link:hover { color: #B4DDC3; }
   header { flex-direction: column; align-items: stretch; }
   nav { justify-content: center; }
 }
+
+/* 교육 문의 (상단 작은 버튼) */
+nav a.nav-contact {
+  border: 1px solid var(--brand);
+  color: var(--brand-ink);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+nav a.nav-contact:hover { background: var(--brand); color: #fff; }
