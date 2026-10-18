@@ -24,17 +24,8 @@
     <!-- CSS 수정할 때마다 ?v= 뒤 날짜만 바꾸면 캐시가 강제로 갱신됩니다 -->
     <link rel="stylesheet" href="./assets/css/style.css?v=20260818b" />
     <style>
-        #services .cat-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin: -28px auto 44px; }
-        #services .cat-nav a { font-weight: 700; font-size: 15px; color: var(--brand-ink); background: var(--brand-tint); padding: 9px 18px; border-radius: 999px; text-decoration: none; }
-        #services .cat-nav a:hover { background: var(--brand); color: #fff; }
-        #services .cat { max-width: 1080px; margin: 0 auto 56px; text-align: left; scroll-margin-top: 90px; }
-        #services .cat-head { display: flex; align-items: center; gap: 14px; margin: 0 0 20px; padding: 0 0 14px; border-bottom: 2px solid var(--brand-tint); }
-        #services .cat-icon { font-size: 34px; line-height: 1; }
-        #services .cat-title { margin: 0; font-size: 24px; color: var(--ink); }
-        #services .cat-desc { margin: 2px 0 0; color: var(--ink-3); font-size: 14px; }
-        #services .cat-more { margin-left: auto; font-weight: 700; font-size: 14px; color: var(--brand-ink); white-space: nowrap; text-decoration: none; }
-        #services .cat-more:hover { text-decoration: underline; }
-        @media (max-width: 720px) { #services .cat-head { flex-wrap: wrap; } #services .cat-more { margin-left: 0; } #services .cat-nav { margin-top: -36px; } }
+        #services .cat-entry { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 880px; text-align: left; }
+        @media (max-width: 720px) { #services .cat-entry { grid-template-columns: 1fr; } }
     </style>
 </head>
 
@@ -49,9 +40,11 @@
         </h1>
         <nav>
             <a href="#hero">홈</a>
-            <a href="#services">교육 과정</a>
+            <a href="edu/student/">학생용</a>
+            <a href="edu/adult/">성인용</a>
+            <a href="edu/institution/">기관용</a>
+            <a href="books/">책·교재</a>
             <a href="#team">팀 소개</a>
-            <a href="#cat-books">책·교재</a>
             <a href="https://ai-news.coalab.co.kr" target="_blank" rel="noopener">AI 뉴스</a>
             <a href="https://blog.naver.com/valuablethings" target="_blank" rel="noopener">블로그</a>
             <a href="https://open.kakao.com/o/sZhJVf7" target="_blank" rel="noopener" class="nav-cta">강의 문의</a>
@@ -77,229 +70,43 @@
     <section class="section" id="services">
         <h3>COALAB 교육 과정</h3>
 
-        <div class="cat-nav" role="navigation" aria-label="교육 분류">
-            <a href="#cat-student">🎓 학생용</a>
-            <a href="#cat-adult">👤 성인용</a>
-            <a href="#cat-inst">🏢 기관용</a>
-            <a href="#cat-books">📚 책·교재</a>
-        </div>
-
-        <div class="cat" id="cat-student">
-            <div class="cat-head">
-                <span class="cat-icon">🎓</span>
-                <div>
-                    <h4 class="cat-title">학생용</h4>
-                    <p class="cat-desc">직접 실험하고 만들어 보며 배우는 학생 대상 교육</p>
-                </div>
-                <a class="cat-more" href="student/">학생 학습실 가기 →</a>
-            </div>
-            <div class="cards">
+        <div class="cards cat-entry">
             <div class="card">
                 <div class="emoji">🎓</div>
-                <span class="badge active">학생용 · 체험 가능</span>
-                <h4>학생 학습실</h4>
-                <p>COS Pro 코딩, 종이회로 과학, AI 블록코딩, 피지컬 AI까지 학생이 직접 실험하며 배우는 학습 공간.</p>
-                <div class="meta">
-                    <span class="meta-item">👥 학생</span>
-                    <span class="meta-item">🧪 바로 체험</span>
-                </div>
-                <a class="details-link" href="student/">🎓 학습실 입장하기 →</a>
+                <span class="badge active">학생용</span>
+                <h4>학생용 교육</h4>
+                <p>직접 실험하고 만들어 보며 배우는 학생 대상 교육</p>
+                <div class="meta"><span class="meta-item">학생 학습실</span><span class="meta-item">종이회로 과학</span><span class="meta-item">디지털새싹</span><span class="meta-item">AI 동화책</span></div>
+                <a class="details-link" href="edu/student/">🎓 학생용 교육 보기 →</a>
             </div>
 
             <div class="card">
-                <div class="emoji">💡</div>
-                <span class="badge active">1회차 체험 가능</span>
-                <h4>종이로 배우는 피지컬 과학</h4>
-                <p>전도성 테이프로 종이에 회로를 만들고 LED를 켜 보는 메이커 과학 시리즈. 온라인 실험과 A4 인쇄용 활동지 제공.</p>
-                <div class="meta">
-                    <span class="meta-item">👥 학생 · 일반 체험</span>
-                    <span class="meta-item">🖨️ A4 활동지</span>
-                </div>
-                <a class="details-link" href="paper-science/">💡 실험 해보기 →</a>
+                <div class="emoji">👤</div>
+                <span class="badge active">성인용</span>
+                <h4>성인용 교육</h4>
+                <p>성인·교사를 위한 AI 리터러시와 실무 교육</p>
+                <div class="meta"><span class="meta-item">평생교육원</span><span class="meta-item">온라인 강의</span><span class="meta-item">창업교육</span><span class="meta-item">교사연수</span></div>
+                <a class="details-link" href="edu/adult/">👤 성인용 교육 보기 →</a>
             </div>
 
-            <div class="card">
-                <div class="emoji">🌱</div>
-                <span class="badge active">수강생 모집중</span>
-                <h4>디지털새싹교육</h4>
-                <p>블록코딩·데이터분석 등 실습 중심 디지털새싹교육 프로그램. 코아랩에서 직접 신청 가능.</p>
-                <div class="meta">
-                    <span class="meta-item">👥 초·중·고 학생</span>
-                    <span class="meta-item">📝 신청 접수중</span>
-                </div>
-                <a class="details-link" href="https://docs.google.com/forms/d/e/1FAIpQLSevcY6BdLHhf0FHhR3GbxOkEN-3mOKvwpu-Bh6dlzPQ3YV6CQ/viewform?usp=send_form" target="_blank" rel="noopener">📝 신청하기 →</a>
-            </div>
-
-            <div class="card">
-                <div class="emoji">📖</div>
-                <span class="badge active">운영중</span>
-                <h4>AI 동화책 만들기</h4>
-                <p>주인공·장소·사건을 고르고 AI와 함께 시나리오를 쓰고, 그림을 그려 나만의 동화책을 완성하는 초등용 활동 프로그램.</p>
-                <div class="meta">
-                    <span class="meta-item">👥 초등 학생</span>
-                    <span class="meta-item">🏫 찾아가는 학교교육</span>
-                </div>
-                <a class="details-link" href="ai-storybook.html">📖 동화책 만들어 보기 →</a>
-            </div>
-
-            <div class="card">
-                <div class="emoji">🐍</div>
-                <span class="badge active">시리즈 오픈</span>
-                <h4>COS Pro 2급 파이썬 스터디</h4>
-                <p>손 계산 → 변수 설계 → 코드 작성 → 경계값 확인. 회차별 연습문제로 COS Pro 2급을 준비하는 파이썬 스터디.</p>
-                <div class="meta">
-                    <span class="meta-item">👥 COS Pro 2급 준비생</span>
-                    <span class="meta-item">📝 1회차 공개 · 시리즈 진행</span>
-                </div>
-                <a class="details-link" href="cos-pro.html">📝 스터디 시작하기 →</a>
-            </div>
-
-            </div>
-        </div>
-
-        <div class="cat" id="cat-adult">
-            <div class="cat-head">
-                <span class="cat-icon">👤</span>
-                <div>
-                    <h4 class="cat-title">성인용</h4>
-                    <p class="cat-desc">성인·교사 대상 AI 리터러시와 실무 교육</p>
-                </div>
-            </div>
-            <div class="cards">
-            <div class="card">
-                <div class="emoji">📚</div>
-                <span class="badge active">진행중</span>
-                <h4>평생교육원</h4>
-                <p>성인 대상 AI 리터러시·ChatGPT 활용·디지털 전환 실무 과정. 누구나 쉽게 시작.</p>
-                <div class="meta">
-                    <span class="meta-item">👥 성인 일반</span>
-                    <span class="meta-item">⏱️ 4~8주</span>
-                </div>
-                <a class="details-link" href="https://open.kakao.com/o/sZhJVf7" target="_blank" rel="noopener">💬 수강 문의 →</a>
-            </div>
-
-            <div class="card">
-                <div class="emoji">💻</div>
-                <span class="badge active">진행중 · 수강가능</span>
-                <h4>온라인 강의 · 교재 출판</h4>
-                <p>내일배움카드 연계 온라인 강의 수강 가능. 교재 출판: <strong>GPT를 활용한 SQL 최적화방안</strong> 외 2권.</p>
-                <div class="meta">
-                    <span class="meta-item">📘 교재 3권 준비중</span>
-                    <span class="meta-item">🖥️ 온라인 · 내일배움카드</span>
-                </div>
-                <a class="details-link" href="https://bitcampus.com/mobile/lecture_view.php?code=O07HKW" target="_blank" rel="noopener">🖥️ 온라인 강의 수강하기 →</a>
-            </div>
-
-            <div class="card">
-                <div class="emoji">🚀</div>
-                <span class="badge active">진행중</span>
-                <h4>창업교육</h4>
-                <p>예비·초기 창업자를 위한 AI 활용 창업 실무. 아이디어 구체화부터 AI 도구로 서비스·콘텐츠를 만들어 보는 실습 중심 과정.</p>
-                <div class="meta">
-                    <span class="meta-item">👥 예비·초기 창업자</span>
-                    <span class="meta-item">📋 맞춤 설계</span>
-                </div>
-                <a class="details-link" href="https://open.kakao.com/o/sZhJVf7" target="_blank" rel="noopener">💬 교육 문의 →</a>
-            </div>
-
-            <div class="card">
-                <div class="emoji">👩‍🏫</div>
-                <span class="badge active">전국 운영</span>
-                <h4>전국 교사연수</h4>
-                <p>생성형AI 활용, 바이브코딩 웹페이지 제작, AI동화책, 데이터분석 등 실습 중심 교사 직무연수. 학교·교육청·도서관 방문형.</p>
-                <div class="meta">
-                    <span class="meta-item">👥 초·중·고 교사</span>
-                    <span class="meta-item">🌏 전국</span>
-                </div>
-                <a class="details-link" href="teacher-training.html">📋 프로그램 자세히 보기 →</a>
-            </div>
-
-            </div>
-        </div>
-
-        <div class="cat" id="cat-inst">
-            <div class="cat-head">
-                <span class="cat-icon">🏢</span>
-                <div>
-                    <h4 class="cat-title">기관용</h4>
-                    <p class="cat-desc">기업·대학·학교·지자체 맞춤 교육</p>
-                </div>
-            </div>
-            <div class="cards">
             <div class="card">
                 <div class="emoji">🏢</div>
-                <span class="badge active">진행중</span>
-                <h4>기업 AX · 기업교육 · 내일배움카드</h4>
-                <p>기업 AX(AI 전환) 교육과 ChatGPT·AI 자동화·SQL 최적화 등 실무 중심 기업 맞춤 교육. 내일배움카드 연계 강의 진행.</p>
-                <div class="meta">
-                    <span class="meta-item">👥 기업 임직원·실무자</span>
-                    <span class="meta-item">📋 맞춤 설계</span>
-                </div>
-                <a class="details-link" href="https://open.kakao.com/o/sZhJVf7" target="_blank" rel="noopener">💬 교육 문의 →</a>
+                <span class="badge active">기관용</span>
+                <h4>기관용 교육</h4>
+                <p>기업·대학·학교·지자체 맞춤 교육</p>
+                <div class="meta"><span class="meta-item">기업 AX</span><span class="meta-item">대학 전문교육</span><span class="meta-item">학교 지역연계</span></div>
+                <a class="details-link" href="edu/institution/">🏢 기관용 교육 보기 →</a>
             </div>
 
             <div class="card">
-                <div class="emoji">🎓</div>
-                <span class="badge active">진행중</span>
-                <h4>대학 전문교육</h4>
-                <p>대학 정규·특강 과정. AI 실무, 데이터 분석, 웹 개발 등 전공 연계 프로그램. 대구가톨릭대 AI 부트캠프(2026.10~ 예정) 등.</p>
-                <div class="meta">
-                    <span class="meta-item">👥 대학생·대학원생</span>
-                    <span class="meta-item">⏱️ 학기 단위</span>
-                </div>
-                <a class="details-link" href="https://open.kakao.com/o/sZhJVf7" target="_blank" rel="noopener">💬 강의 문의 →</a>
+                <div class="emoji">📚</div>
+                <span class="badge active">책 · 교재</span>
+                <h4>책·교재</h4>
+                <p>코아랩 출판사에서 수업 현장의 교재를 직접 만듭니다</p>
+                <div class="meta"><span class="meta-item">AI 시대, 생각하고 만드는 교실</span><span class="meta-item">실전 우분투 리눅스</span></div>
+                <a class="details-link" href="books/">📚 책·교재 보기 →</a>
             </div>
 
-            <div class="card">
-                <div class="emoji">🏫</div>
-                <span class="badge active">진행중</span>
-                <h4>학교 지역연계 (파주시)</h4>
-                <p>파주시 초·중·고 AI 교육 지역연계 사업. 학생 대상 AI 창작·코딩·데이터 프로그램.</p>
-                <div class="meta">
-                    <span class="meta-item">👥 초·중·고 학생</span>
-                    <span class="meta-item">📍 파주시</span>
-                </div>
-                <a class="details-link" href="https://open.kakao.com/o/sZhJVf7" target="_blank" rel="noopener">💬 연계 문의 →</a>
-            </div>
-
-            </div>
-        </div>
-
-        <div class="cat" id="cat-books">
-            <div class="cat-head">
-                <span class="cat-icon">📚</span>
-                <div>
-                    <h4 class="cat-title">책·교재</h4>
-                    <p class="cat-desc">수업 현장에서 쓰는 교재를 코아랩 출판사에서 직접 만듭니다</p>
-                </div>
-                <a class="cat-more" href="books/">전체 책 보기 →</a>
-            </div>
-            <div class="cards">
-            <div class="card">
-                <div class="emoji">📘</div>
-                <span class="badge active">제작 중</span>
-                <h4>AI 시대, 생각하고 만드는 교실</h4>
-                <p>AI 윤리, 이미지·동화책·만화·영상 만들기까지 직접 쓰고 그리며 표현하는 학생용 창작 워크북.</p>
-                <div class="meta">
-                    <span class="meta-item">🎓 학생용 워크북</span>
-                    <span class="meta-item">🏫 수업 도입 가능</span>
-                </div>
-                <a class="details-link" href="books/#ai-classroom">📘 책 자세히 보기 →</a>
-            </div>
-
-            <div class="card">
-                <div class="emoji">💻</div>
-                <span class="badge active">제작 완료</span>
-                <h4>실전 우분투 리눅스</h4>
-                <p>컴퓨터공학 전공자를 위한 설치·서버·Docker·자동화. 18개 챕터와 부록으로 구성한 실습 중심 실무서.</p>
-                <div class="meta">
-                    <span class="meta-item">📖 225쪽</span>
-                    <span class="meta-item">💻 전공자·실무자</span>
-                </div>
-                <a class="details-link" href="books/#ubuntu-linux">💻 책 자세히 보기 →</a>
-            </div>
-
-            </div>
         </div>
     </section>
 
