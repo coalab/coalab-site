@@ -716,3 +716,11 @@ nav a.nav-contact {
   transition: background 0.2s ease, color 0.2s ease;
 }
 nav a.nav-contact:hover { background: var(--brand); color: #fff; }
+
+/* 카카오톡 문의 버튼 (상단 메뉴) */
+nav a.nav-cta {
+  background: #FEE500;
+  color: #191919;
+}
+nav a.nav-cta:hover { background: #F5DC00; color: #191919; }
+nav a.nav-cta { padding: 8px 14px; font-size: 18px; line-height: 1; }
