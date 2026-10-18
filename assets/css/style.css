@@ -724,3 +724,5 @@ nav a.nav-cta {
 }
 nav a.nav-cta:hover { background: #F5DC00; color: #191919; }
 nav a.nav-cta { padding: 8px 14px; font-size: 18px; line-height: 1; }
+nav a.nav-cta { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; font-size: 14px; font-weight: 700; line-height: 1; }
+nav a.nav-cta .nav-bubble { flex: none; }
