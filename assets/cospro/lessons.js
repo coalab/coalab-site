@@ -51,6 +51,15 @@ window.COSPRO_SERIES = {
       minutes: 120,
       count: 8,
       locked: false
+    },
+    {
+      n: 6,
+      file: 'cos-pro-06.html',
+      title: '알맞은 도구를 골라 빠르게 푸는 시간',
+      topic: '소수 · 괄호 검사 · 누적 합 · 이진 탐색 · 계단 오르기 · 투 포인터 · 최대 연속 부분합 · 슬라이딩 윈도우',
+      minutes: 120,
+      count: 8,
+      locked: false
     }
   ]
 };
