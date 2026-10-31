@@ -42,6 +42,15 @@ window.COSPRO_SERIES = {
       minutes: 120,
       count: 8,
       locked: false
+    },
+    {
+      n: 5,
+      file: 'cos-pro-05.html',
+      title: '표와 격자를 읽고 다루는 시간',
+      topic: '2차원 리스트 · 행·열 합 · 대각선 · 행열 바꾸기 · 테두리 · 주변 칸 탐색 · 회전 · 구역 합',
+      minutes: 120,
+      count: 8,
+      locked: false
     }
   ]
 };
