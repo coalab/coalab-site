@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로봇의 두뇌와 척수 분리 | COALAB 학생 학습실</title>
+    <meta name="description" content="Raspberry Pi 5와 ESP32로 배우는 이종 컴퓨팅 아키텍처 - 학생용 교안과 실력 점검 퀴즈">
+    <link rel="canonical" href="https://coalab.co.kr/student/robot-brain/">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 폰트 적용 (Pretendard) -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+    <!-- 폰트어썸 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif; background-color: #f8fafc; }
+        .glass-card { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.6); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01); }
+        input[type="radio"]:checked + label { background-color: #eff6ff; border-color: #3b82f6; color: #1e40af; font-weight: 700; box-shadow: inset 0 0 0 1px #3b82f6; }
+        input[type="radio"] { display: none; }
+        .radio-label { border: 2px solid #e2e8f0; border-radius: 0.75rem; padding: 1.2rem; cursor: pointer; transition: all 0.2s; display: block; color: #475569; font-size: 1.05rem; }
+        .radio-label:hover { background-color: #f1f5f9; border-color: #cbd5e1; transform: translateY(-2px); }
+        .highlight-text { position: relative; display: inline-block; z-index: 1; }
+        .highlight-text::after { content: ''; position: absolute; left: 0; bottom: 4px; width: 100%; height: 8px; background-color: #bfdbfe; z-index: -1; border-radius: 2px; }
+    </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-blue-200">
+
+    <div class="bg-slate-900 text-sm text-blue-100 px-6 py-2"><a href="/student/" class="hover:underline">← COALAB 학생 학습실</a></div>
+
+    <!-- Header -->
+    <header class="bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-800 text-white pt-16 pb-24 px-6 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <span class="px-4 py-1.5 bg-blue-500/30 rounded-full text-sm font-bold tracking-wider mb-5 inline-block border border-blue-400/30 backdrop-blur-sm">인공지능 융합 로봇 제어</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-5 tracking-tight">로봇의 두뇌와 척수 분리 작전:<br/><span class="text-blue-300">이종 컴퓨팅 아키텍처</span></h1>
+            <p class="text-blue-100 text-lg md:text-xl font-light opacity-90">Raspberry Pi 5와 ESP32는 어떻게 완벽한 한 팀이 될까요?</p>
+        </div>
+        <div class="absolute right-0 bottom-0 opacity-10 transform translate-x-10 translate-y-10">
+            <i class="fa-solid fa-robot text-9xl" style="font-size: 15rem;"></i>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-14 relative z-20 pb-20">
+        
+        <!-- Section 1: Concept Analogy -->
+        <div class="glass-card rounded-3xl p-8 md:p-10 mb-10">
+            <div class="flex items-center mb-6 border-b border-slate-100 pb-4">
+                <div class="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center text-blue-600 mr-5 shadow-inner">
+                    <i class="fa-solid fa-lightbulb text-3xl"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-slate-800 tracking-tight">왜 로봇의 뇌를 쪼개야 할까?</h2>
+            </div>
+            
+            <p class="text-slate-600 mb-8 leading-relaxed text-lg">
+                우리 몸을 생각해 볼까요? 어려운 수학 문제를 풀 때는 <strong class="text-slate-800">대뇌</strong>가 깊게 생각하지만, 뜨거운 난로를 만졌을 때는 뇌까지 신호가 가기도 전에 <strong class="text-slate-800">척수</strong>가 반사적으로 손을 떼게 만듭니다. <br><br>
+                자율주행 로봇도 마찬가지입니다. 길을 찾고 사물을 인식하는 <span class="highlight-text font-bold text-blue-700">'인지(대뇌)'</span> 역할과, 바퀴 모터를 밀리초(ms) 단위로 정밀하게 굴리고 장애물 앞에서 즉시 멈추는 <span class="highlight-text font-bold text-indigo-700">'실시간 제어(척수)'</span> 역할을 완벽하게 물리적으로 분리해야 합니다. 이를 <strong>이종 컴퓨팅(Heterogeneous Computing) 구조</strong>라고 부릅니다.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- RPi 5 Card -->
+                <div class="rounded-2xl p-6 bg-slate-50 border border-slate-200 hover:shadow-md transition-shadow">
+                    <div class="flex justify-between items-start mb-5">
+                        <div>
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">대뇌 (상위 인지 계층)</span>
+                            <h3 class="text-2xl font-black text-slate-800 mt-1">Raspberry Pi 5</h3>
+                            <p class="text-sm font-medium text-blue-600 mt-1">OS: Linux / ROS 2</p>
+                        </div>
+                        <i class="fa-solid fa-eye text-slate-300 text-4xl"></i>
+                    </div>
+                    <ul class="space-y-3 text-slate-600 text-sm md:text-base">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-emerald-500 mt-1 mr-3"></i><span><strong>주요 임무:</strong> 카메라(Vision)와 라이다(LiDAR) 센서 정보를 융합하여 길을 찾고 AI 추론을 합니다.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-triangle-exclamation text-amber-500 mt-1 mr-3"></i><span><strong>치명적 약점:</strong> 범용 OS(Linux)는 스케줄링이 비결정론적이라 렉(Jitter)이 발생할 수 있어, 0.01초가 중요한 모터 제어에는 부적합합니다.</span></li>
+                    </ul>
+                </div>
+                
+                <!-- ESP32 Card -->
+                <div class="rounded-2xl p-6 bg-slate-50 border border-slate-200 hover:shadow-md transition-shadow">
+                    <div class="flex justify-between items-start mb-5">
+                        <div>
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">척수 (하위 제어 계층)</span>
+                            <h3 class="text-2xl font-black text-slate-800 mt-1">ESP32</h3>
+                            <p class="text-sm font-medium text-emerald-600 mt-1">OS: FreeRTOS</p>
+                        </div>
+                        <i class="fa-solid fa-microchip text-slate-300 text-4xl"></i>
+                    </div>
+                    <ul class="space-y-3 text-slate-600 text-sm md:text-base">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-emerald-500 mt-1 mr-3"></i><span><strong>주요 임무:</strong> 정해진 주기(10~50ms)마다 정확하게 모터 속도를 조절(PID 제어)합니다.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-bolt text-amber-500 mt-1 mr-3"></i><span><strong>강력한 장점:</strong> 상위 인지 계층(RPi 5)이 다운되거나 통신이 끊겨도, <strong>결정론적(Deterministic) 타이밍</strong>을 바탕으로 즉시 비상 셧다운을 실행합니다.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Communication & Safety -->
+        <div class="glass-card rounded-3xl p-8 md:p-10 mb-10">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
+                <i class="fa-solid fa-tower-broadcast text-blue-500 mr-3"></i> 대뇌와 척수의 통신 (UART)
+            </h2>
+            <p class="text-slate-600 mb-6 text-lg">
+                분리된 두 컴퓨터는 <strong>고속 직렬 통신(UART)</strong>으로 속도 명령을 주고받습니다. 데이터 파손을 막기 위해 가벼운 '바이너리 프레임 패킷'을 사용하며, 패킷 마지막에는 데이터가 오염되지 않았는지 검사하는 <strong>체크섬(CRC)</strong>을 반드시 붙입니다.
+            </p>
+
+            <div class="bg-red-50 border-l-4 border-red-500 rounded-r-2xl p-6 shadow-sm">
+                <div class="flex items-center mb-3">
+                    <i class="fa-solid fa-triangle-exclamation text-red-500 text-2xl mr-3"></i>
+                    <h3 class="text-xl font-bold text-red-800">안전 주의 (교사 시연 필수)</h3>
+                </div>
+                <p class="text-red-700 font-medium text-lg leading-relaxed">
+                    RPi 5는 <strong class="bg-red-100 px-1 rounded">3.3V</strong>를 사용하고, 모터와 ESP32 주변 회로는 <strong class="bg-red-100 px-1 rounded">5V</strong>를 사용하는 경우가 많습니다. 전압이 다른 두 기기의 통신 핀을 직접 연결하면 <strong>메인보드가 타버리거나 화재</strong>가 발생할 수 있습니다! <br>
+                    따라서 전압을 맞춰주는 <strong class="text-red-900 underline decoration-red-400 decoration-2">레벨 시프터(Level Shifter)</strong> 결선은 선생님의 시연으로만 안전하게 관찰합니다.
+                </p>
+            </div>
+        </div>
+
+        <!-- Interactive Quiz Section -->
+        <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
+            <div class="bg-slate-800 px-8 py-5 flex items-center justify-between">
+                <h3 class="text-white font-bold text-xl flex items-center"><i class="fa-solid fa-check-double text-blue-400 mr-3"></i> 실력 점검 퀴즈</h3>
+                <span class="text-slate-400 text-sm font-mono tracking-widest">EVALUATION</span>
+            </div>
+            
+            <form id="quizForm" class="p-8 md:p-10">
+                
+                <div class="mb-10 bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <label class="block text-sm font-bold text-slate-700 mb-3 uppercase tracking-wide">익명 닉네임 생성 (본명/학번 금지)</label>
+                    <input type="text" id="nickname" required placeholder="예: 코딩하는 다람쥐" class="w-full px-5 py-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-shadow text-lg">
+                </div>
+
+                <!-- Q1 -->
+                <div class="mb-10">
+                    <h4 class="text-xl font-bold text-slate-800 mb-5 leading-snug"><span class="text-blue-500 mr-2">Q1.</span>자율 배달 로봇이 고성능 인지 계층과 실시간 제어 계층을 물리적으로 분리하는 '이종 컴퓨팅 구조'를 채택한 핵심 이유는?</h4>
+                    <div class="space-y-3">
+                        <input type="radio" id="q1a" name="q1" value="0">
+                        <label for="q1a" class="radio-label">부품을 나누어 조립 단가를 낮추기 위해</label>
+                        
+                        <input type="radio" id="q1b" name="q1" value="1">
+                        <label for="q1b" class="radio-label">무거운 AI 연산과 밀리초 단위의 정밀 모터 제어를 분리하여 시스템 안정성을 극대화하기 위해</label>
+                        
+                        <input type="radio" id="q1c" name="q1" value="0">
+                        <label for="q1c" class="radio-label">네트워크 통신 속도를 2배로 증가시키기 위해</label>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="mb-10">
+                    <h4 class="text-xl font-bold text-slate-800 mb-5 leading-snug"><span class="text-blue-500 mr-2">Q2.</span>상위 인지 계층인 Raspberry Pi 5(Linux)가 직접 모터를 제어할 때 발생하는 치명적인 한계점은?</h4>
+                    <div class="space-y-3">
+                        <input type="radio" id="q2a" name="q2" value="1">
+                        <label for="q2a" class="radio-label">운영체제의 스케줄링이 비결정론적이어서 제어 주기에 렉(Jitter)이 발생할 수 있다.</label>
+                        
+                        <input type="radio" id="q2b" name="q2" value="0">
+                        <label for="q2b" class="radio-label">전력 소모가 너무 적어 모터를 굴릴 힘이 부족하다.</label>
+                        
+                        <input type="radio" id="q2c" name="q2" value="0">
+                        <label for="q2c" class="radio-label">모터의 엔코더 펄스를 읽을 수 있는 핀이 전혀 존재하지 않는다.</label>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="mb-10">
+                    <h4 class="text-xl font-bold text-slate-800 mb-5 leading-snug"><span class="text-blue-500 mr-2">Q3.</span>하위 제어기(ESP32)에서 구동되는 FreeRTOS 운영체제가 모터 제어에 적합한 가장 큰 특징은?</h4>
+                    <div class="space-y-3">
+                        <input type="radio" id="q3a" name="q3" value="0">
+                        <label for="q3a" class="radio-label">Python 코드를 컴파일 없이 바로 실행할 수 있다.</label>
+                        
+                        <input type="radio" id="q3b" name="q3" value="0">
+                        <label for="q3b" class="radio-label">배터리를 충전하는 기능이 내장되어 있다.</label>
+                        
+                        <input type="radio" id="q3c" name="q3" value="1">
+                        <label for="q3c" class="radio-label">지정된 시간(예: 10~50ms)마다 정확하게 실행되는 결정론적(Deterministic) 타이밍을 보장한다.</label>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="mb-10">
+                    <h4 class="text-xl font-bold text-slate-800 mb-5 leading-snug"><span class="text-blue-500 mr-2">Q4.</span>두 제어기가 바이너리 프레임 패킷으로 통신할 때, 데이터가 손실되거나 오염되었는지 검증하기 위해 끝에 붙이는 값은?</h4>
+                    <div class="space-y-3">
+                        <input type="radio" id="q4a" name="q4" value="1">
+                        <label for="q4a" class="radio-label">Checksum (체크섬, CRC)</label>
+                        
+                        <input type="radio" id="q4b" name="q4" value="0">
+                        <label for="q4b" class="radio-label">Header (동기화 바이트)</label>
+                        
+                        <input type="radio" id="q4c" name="q4" value="0">
+                        <label for="q4c" class="radio-label">Payload (목표 선속도)</label>
+                    </div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="mb-10">
+                    <h4 class="text-xl font-bold text-slate-800 mb-5 leading-snug"><span class="text-blue-500 mr-2">Q5.</span>[안전] 3.3V를 사용하는 기기와 5V를 사용하는 기기를 통신선으로 바로 연결하면 안 되는 이유는?</h4>
+                    <div class="space-y-3">
+                        <input type="radio" id="q5a" name="q5" value="0">
+                        <label for="q5a" class="radio-label">소프트웨어 코드가 지워질 수 있어서</label>
+                        
+                        <input type="radio" id="q5b" name="q5" value="1">
+                        <label for="q5b" class="radio-label">전압 레벨 차이로 인해 칩셋이 타버리거나 화재(소손)가 발생할 위험이 커서</label>
+                        
+                        <input type="radio" id="q5c" name="q5" value="0">
+                        <label for="q5c" class="radio-label">로봇이 뒤로 후진하게 되어서</label>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="button" id="submitBtn" onclick="submitQuiz()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black text-xl py-5 rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 flex justify-center items-center mt-6">
+                    <i class="fa-solid fa-rocket mr-3"></i> 답안 제출하고 채점 받기
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center pb-10 text-slate-400 font-medium">
+        &copy; 특성화고 AI로봇과 전공 심화 과정
+    </footer>
+
+    <script>
+        function submitQuiz() {
+            const form = document.getElementById('quizForm');
+            const nickname = document.getElementById('nickname').value.trim();
+            const btn = document.getElementById('submitBtn');
+            
+            if(!nickname) {
+                alert("앗! 닉네임을 먼저 입력해 주세요.");
+                document.getElementById('nickname').focus();
+                return;
+            }
+
+            let score = 0;
+            // 5문항 순회하며 점수 합산
+            for (let i = 1; i <= 5; i++) {
+                const checked = form.querySelector(`input[name="q${i}"]:checked`);
+                if (checked) score += parseInt(checked.value);
+            }
+
+            // UI 상태 변경 (로딩)
+            const originalText = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-3"></i> 채점 중...';
+            btn.classList.replace('bg-blue-600', 'bg-slate-400');
+            btn.classList.replace('hover:bg-blue-700', 'hover:bg-slate-500');
+            btn.classList.remove('hover:-translate-y-1');
+
+            // 실제 수업에서는 이 변수에 선생님이 배포한 Code.gs의 웹앱 URL을 넣습니다.
+            // 지금은 학생들에게 결과 화면만 시뮬레이션으로 보여줍니다.
+            const APPS_SCRIPT_URL = ''; 
+
+            if(APPS_SCRIPT_URL === '') {
+                // 테스트 시뮬레이션
+                setTimeout(() => {
+                    alert(`🎉 ${nickname}님 수고하셨습니다!
+최종 점수: ${score}점 / 5점 만점
+
+(실제 수업에서는 이 점수가 선생님의 구글 시트로 안전하게 전송됩니다.)`);
+                    
+                    // 초기화
+                    btn.disabled = false;
+                    btn.innerHTML = originalText;
+                    btn.classList.replace('bg-slate-400', 'bg-blue-600');
+                    btn.classList.replace('hover:bg-slate-500', 'hover:bg-blue-700');
+                    btn.classList.add('hover:-translate-y-1');
+                    form.reset();
+                }, 1000);
+            } else {
+                // 실제 백엔드 연동 로직
+                fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ nickname: nickname, score: score })
+                })
+                .then(() => {
+                    alert(`🎉 ${nickname}님 제출 성공!
+최종 점수: ${score}점`);
+                    form.reset();
+                })
+                .catch(error => {
+                    alert('네트워크 오류가 발생했습니다. 다시 시도해 주세요.');
+                })
+                .finally(() => {
+                    btn.disabled = false;
+                    btn.innerHTML = originalText;
+                    btn.classList.replace('bg-slate-400', 'bg-blue-600');
+                    btn.classList.replace('hover:bg-slate-500', 'hover:bg-blue-700');
+                    btn.classList.add('hover:-translate-y-1');
+                });
+            }
+        }
+    </script>
+</body>
+</html>
