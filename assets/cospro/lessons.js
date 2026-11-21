@@ -60,6 +60,15 @@ window.COSPRO_SERIES = {
       minutes: 120,
       count: 8,
       locked: false
+    },
+    {
+      n: 7,
+      file: 'cos-pro-07.html',
+      title: '함수와 클래스로 구조를 만드는 시간',
+      topic: '최대공약수 · 진법 변환 · 문자열 압축 · 정렬 기준 · 재귀 · 딕셔너리 · 클래스 · 큐',
+      minutes: 120,
+      count: 8,
+      locked: false
     }
   ]
 };
