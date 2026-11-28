@@ -60,6 +60,15 @@ window.COSPRO_SERIES = {
       minutes: 120,
       count: 8,
       locked: false
+    },
+    {
+      n: 7,
+      file: 'cos-pro-07.html',
+      title: '실전처럼 풀어 보는 모의고사 시간',
+      topic: '짝수의 합 · 회문 · 윤년 · 모음 세기 · 완전수 · 단어 빈도 · 대각선 합 · 괄호 검사 · 이진수 연속 1',
+      minutes: 60,
+      count: 10,
+      locked: false
     }
   ]
 };
