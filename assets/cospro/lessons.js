@@ -69,6 +69,96 @@ window.COSPRO_SERIES = {
       minutes: 60,
       count: 10,
       locked: false
+    },
+    {
+      n: 8,
+      file: 'cos-pro-08.html',
+      title: 'COS Pro 2급 예상문제 1세트',
+      topic: '숫자 기본 · 3의 배수의 합 · 자릿수의 합 · 팩토리얼 · 최대공약수 · 소수 판별 오류 수정 외',
+      minutes: 60,
+      count: 10,
+      locked: false
+    },
+    {
+      n: 9,
+      file: 'cos-pro-09.html',
+      title: 'COS Pro 2급 예상문제 2세트',
+      topic: '문자열 · 단어 개수 세기 · 대문자 개수 · 가장 긴 단어의 길이 · 모음 제거 · 대소문자 바꾸기 오류 수정 외',
+      minutes: 60,
+      count: 10,
+      locked: false
+    },
+    {
+      n: 10,
+      file: 'cos-pro-10.html',
+      title: 'COS Pro 2급 예상문제 3세트',
+      topic: '리스트 · 최댓값의 위치 · 평균 이상 개수 · 짝수 번째 원소의 합 · 리스트 왼쪽으로 돌리기 · 가장 작은 두 수의 합 오류 수정 외',
+      minutes: 60,
+      count: 10,
+      locked: false
+    },
+    {
+      n: 11,
+      file: 'cos-pro-11.html',
+      title: 'COS Pro 2급 예상문제 4세트',
+      topic: '딕셔너리·집합 · 서로 다른 수의 개수 · 최고 점수 학생 · 키와 값 뒤집기 · 평균이 가장 높은 학생 · 재고 정리 오류 수정 외',
+      minutes: 60,
+      count: 10,
+      locked: false
+    },
+    {
+      n: 12,
+      file: 'cos-pro-12.html',
+      title: 'COS Pro 2급 예상문제 5세트',
+      topic: '2차원 리스트 · 모든 원소의 합 · 행별 합 · 열별 합 · 최댓값의 위치 · 전치 행렬 오류 수정 외',
+      minutes: 60,
+      count: 10,
+      locked: false
+    },
+    {
+      n: 13,
+      file: 'cos-pro-13.html',
+      title: 'COS Pro 2급 예상문제 6세트',
+      topic: '탐색·정렬·재귀 · 마지막으로 나온 위치 · 오름차순인지 확인 · 1부터 n까지의 합 (재귀) · 거듭제곱 (재귀) · 버블 정렬 한 번 오류 수정 외',
+      minutes: 60,
+      count: 10,
+      locked: false
+    },
+    {
+      n: 14,
+      file: 'cos-pro-14.html',
+      title: 'COS Pro 2급 예상문제 7세트',
+      topic: '날짜·시간 · 시간을 초로 바꾸기 · 초를 시:분:초로 바꾸기 · 1년 중 몇 번째 날 · 두 시각 사이의 분 · 윤년 개수 오류 수정 외',
+      minutes: 60,
+      count: 10,
+      locked: false
+    },
+    {
+      n: 15,
+      file: 'cos-pro-15.html',
+      title: 'COS Pro 2급 예상문제 8세트',
+      topic: '스택·큐·패턴 · 스택으로 문자열 뒤집기 · 카드 버리기 · 별 삼각형 · 구구단 한 단 · 괄호의 최대 깊이 오류 수정 외',
+      minutes: 60,
+      count: 10,
+      locked: false
+    },
+    {
+      n: 16,
+      file: 'cos-pro-16.html',
+      title: 'COS Pro 2급 예상문제 9세트',
+      topic: '게임·생활 로직 · 가위바위보 · 학점 계산 · 주차 요금 · 로또 등수 · 숫자 야구 오류 수정 외',
+      minutes: 60,
+      count: 10,
+      locked: false
+    },
+    {
+      n: 17,
+      file: 'cos-pro-17.html',
+      title: 'COS Pro 2급 예상문제 10세트',
+      topic: '종합 마무리 · 연속 합이 n 이하인 최대 개수 · 한 칸 건너 읽기 · 두 수 사이의 합 · 가장 가까운 수 · 단어별 뒤집기 오류 수정 외',
+      minutes: 60,
+      count: 10,
+      locked: false
     }
   ]
 };
